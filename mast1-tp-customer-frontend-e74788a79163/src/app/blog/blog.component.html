@@ -1,0 +1,34 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="blogs_page" *ngIf="blogData">
+    <div class="container">
+        <div class="blog_heading">
+            <h2> {{blogData.title}} </h2>
+            <p [innerHtml]="blogData.description"> </p>
+        </div>
+        <div class="blog_inner">
+            <div class="blog_left">
+                <div class="blog_lists" *ngIf="blogData">
+                    <div class="blog_box" *ngFor="let blog of blogData?.blog">
+                        <div class="blog_thumbnail" style="background:url({{blog.file}});">
+                        </div>
+                        <div class="blog_content">
+                            <h4><a href="javascript:void(0)" (click)="goToDetail(blog.id)">{{blog.title}}</a>
+                            </h4>
+                            <p [innerHTML]="blog.description | slice:0:300"></p>
+                            <div class="meta">
+                                <span>{{blog.created_at | date:'longDate' }}</span>
+
+                                <a href="javascript:void(0)" *ngIf="blog.description.length>300"
+                                    (click)="goToDetail(blog.id)">Read More..</a>
+                            </div>
+                        </div>
+                    </div>
+                    <app-paginator [pageSize]="pageOpts.PageSize" [totalCount]="totalPage"
+                        [pageNumber]="pageOpts.PageNumber" (onPageSelect)="PageSelect($event)"></app-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- 
+<app-footer></app-footer> -->

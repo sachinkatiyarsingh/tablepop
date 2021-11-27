@@ -1,0 +1,557 @@
+.step_section {}
+
+.step_section .back_icon {}
+
+.step_section .back_icon .back_arrow {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    flex-direction: row;
+}
+
+.step_section .back_icon .back_arrow a {}
+
+.step_section .back_icon .back_arrow a img {
+    max-width: 35px;
+}
+
+.step_section .heading {
+    background: #f4fafb;
+    padding: 20px 0px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+.step_section .heading h4 {}
+
+.step_section .steps {
+    padding: 40px 0px;
+    min-height: calc(100vh - 200px);
+    padding-bottom: 130px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.step_section .steps h3 {
+    padding-bottom: 20px;
+}
+
+.step_section .steps .radio_group {}
+
+.step_section .steps .radio_group .radio_list li {
+    padding-bottom: 20px;
+}
+
+.step_section .steps .radio_group .radio_list.active {}
+
+.step_section .steps .radio_group .radio_list.active span {}
+
+.step_section .steps .radio_group .radio_list li .input_box {
+    width: 714px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 37px;
+}
+
+.step_section .error {
+    color: #f00;
+    font-size: 12px;
+    padding-top: 5px;
+    display: block;
+}
+
+.step_section .steps .radio_group .radio_list li .form-control {
+    border: 1px solid #000000;
+    background: #f4fafb;
+}
+.step_section .steps .radio_group .radio_list li .form-control.other_input{
+    width: 240px;
+    margin-left: 20px;
+    border: none;
+    border: 1px solid #000;
+}
+.step_section .steps .radio_group .radio_list li .radio {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #000;
+    position: relative;
+    position: relative;
+    cursor: pointer;
+}
+
+.step_section .steps .radio_group .radio_list li .radio.active {}
+
+.step_section .steps .radio_group .radio_list li .radio.active:after {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #000;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+
+.step_section .steps .radio_group .radio_list li label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.step_section .steps .radio_group .radio_list li ul {
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.step_section .steps .radio_group .radio_list li ul li {
+    padding-bottom: 10px;
+}
+.step_section.step_one .steps .radio_group .radio_list li ul li {
+    margin-left: 25px;
+}
+.step_section .steps .radio_group .radio_list li ul li label {}
+
+.step_section .steps .step_controls {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-width: 1200px;
+    margin: 0px auto;
+    padding: 20px 0px;
+}
+
+.step_section .steps .step_controls .step_progress {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.step_section .steps .step_controls .step_progress span {
+    font-size: 12px;
+}
+
+.step_section .steps .step_controls .step_progress .progress_bar {
+    background: #707070;
+    height: 7px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.step_section .steps .step_controls .step_progress .progress_bar .bar {
+    width: 5%;
+    background: #000;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+.step_section .steps .step_controls .next_btn {
+    max-width: 150px;
+}
+
+.step_section .steps .step_controls .next_btn a {
+    background: #000;
+    text-align: center;
+    display: block;
+    color: #fff;
+}
+
+.step_section .steps .range_box {
+    display: flex;
+    max-width: 500px;
+    align-items: center;
+}
+
+.step_section .steps .range_box .form-control {
+    border: 1px solid #000;
+    background: #f4fafb;
+    width: 150px;
+}
+
+.step_section .steps .range_box .middle_to {
+    padding: 0px 20px;
+}
+
+.step_section .steps .planner_form {
+    margin-bottom: 20px;
+    width: 328px;
+}
+
+.step_section .steps .planner_form input {
+    border: 1px solid #000000;
+    background: #f4fafb;
+}
+
+.step_section .steps .form-group {
+    margin-bottom: 20px;
+    width: 754px;
+}
+
+.step_section .steps .form-group .form-control {
+    border: 1px solid #000;
+    background: #f4fafb;
+}
+
+.date-picker-field .dp-picker-input {
+    padding: 5px 20px;
+    box-sizing: border-box;
+    height: 45px;
+    border: 1px solid #000;
+    background: #f4fafb;
+    width: 100%;
+    max-width: 300px;
+}
+
+.step_section .steps label {}
+
+.step_section .steps .events_section {
+    display: flex;
+    align-items: flex-start;
+}
+
+.step_section .steps .events_section .events_box {
+    flex: 1;
+    max-width: 310px;
+}
+.checkbox{
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #000;
+  position: relative;
+  position: relative;
+  cursor: pointer;
+}
+.checkbox.active:after {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 6px;
+    border: solid #6c0202;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 5px;
+    top: 3px;
+  }
+ .virtual{
+    background: #f3fafb !important;
+ }
+ .first{
+     display: block;
+ }
+.step_section .steps .events_section .events_box .event_type_box:after,
+.step_section .steps .venue_box .venue_btn .venue_select:after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: url(src/assets/images/arrow@2x.png);
+    background-size: cover;
+    right: 12px;
+}
+.step_section .steps .events_section .events_box.active .event_type_box:after,
+.step_section .steps .venue_box .venue_btn .venue_select.active:after,
+.step_section .steps .events_section .events_box .event_type_box.active:after{
+    transform: rotate(90deg);
+}
+.step_section .steps .events_section .events_box a {
+    display: block;
+    background: #F4FAFB;
+    border: 1px solid #000;
+    font-weight: 600;
+    color: #000;
+    padding: 10px 20px;
+    max-width: 160px;
+    position: relative;
+}
+
+
+.step_section .guest_box {}
+
+.step_section .guest_box ul {
+    display: flex;
+    margin: 60px 0px;
+    max-width: 900px;
+    position: relative;
+}
+
+.step_section .guest_box ul::after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    background: #000;
+    left: 0px;
+    right: 0px;
+    top: 11px;
+}
+
+.step_section .guest_box ul li {
+    text-align: center;
+    flex: 1;
+    position: relative;
+}
+
+.step_section .guest_box ul li span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    margin: 0px auto;
+    text-align: center;
+    background: #fff;
+    position: relative;
+    z-index: 999;
+}
+
+.step_section .guest_box ul li span.active {
+    background: #BCD9DE;
+}
+
+.step_section .guest_box ul li p {
+    margin: 0px;
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+.step_section .congratulation_box {
+    padding: 40px 0px;
+}
+
+.step_section .congratulation_box .congratulation_section {
+    display: flex;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left {
+    flex: 1;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left h4 {
+    font-size: 55px;
+    padding-bottom: 20px;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left p {
+    max-width: 380px;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left a {
+    background: #F4FAFB;
+    border: 1px solid #000;
+    padding: 20px 20px;
+    display: inline-block;
+    font-size: 22px;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_right {
+    flex: 1;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_right img {
+    width: 100%;
+}
+
+.events_service_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: -1%;
+}
+
+.events_service_section .events_box {
+    flex: 1;
+    max-width: 19%;
+    width: 19%;
+    margin-left: 1%;
+}
+
+.events_service_section .events_box select {
+    background: #FAEFEA;
+    font-weight: 500;
+    color: #000;
+    padding: 10px 20px;
+    display: block;
+    border: 1px solid #000;
+    height: 46px;
+    border-radius: 0px !important;
+    font-size: 17px;
+}
+
+.venue_box {
+    max-width: 700px;
+    flex: 1;
+}
+
+.venue_box .venue_btn {
+    display: flex;
+}
+
+.venue_box .venue_btn .venue_select {
+    display: block;
+    border: 1px solid #000;
+    background: #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 30px;
+    position: relative;
+}
+
+.venue_box .venue_btn .venue_select.active {
+    background: #f3fafb;
+}
+
+.venue_box .form-group {
+    width: auto !important;
+}
+
+.venue_box .form-group input {
+    background: #fff !important;
+}
+
+.other {}
+
+.attach_image {
+    position: relative;
+    background: #F4FAFB;
+    border: 1px solid #000;
+    overflow: hidden;
+    padding: 10px 20px;
+    width: 130px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.attach_image span {
+    pointer-events: none;
+}
+
+.attach_image input {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.uploaded_images {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    padding: 20px 0px;
+}
+
+.uploaded_images .selected-img {
+    background: #EFEAE6;
+    border-radius: 20px;
+    margin-left: 15px;
+    max-width: 150px;
+    width: 150px;
+    margin-bottom: 15px;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.uploaded_images .selected-img .preview_image {
+    width: 100%;
+    max-width: 80px;
+}
+
+.uploaded_images .selected-img a.close {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 34px;
+    margin-left: 11px;
+    text-align: center;
+    background: #6D0202;
+    position: absolute;
+    left: 0px;
+    display: none;
+    right: 0px;
+    margin: 0px auto;
+    top: -13px;
+}
+
+.uploaded_images .selected-img:hover a.close {
+    display: block;
+}
+
+.uploaded_images .selected-img a.close img {
+    max-width: 13px;
+}
+@media (max-width:767px){
+    .step_section .back_icon .back_arrow a img {
+        max-width: 19px;
+    }
+    .step_section .steps h3 {
+        font-size: 17px;
+    }
+    .step_section.step_one .steps .radio_group .radio_list li ul li {
+       display: flex;
+    }
+    .step_section .steps .radio_group .radio_list li .radio {
+        flex: 1;
+        max-width: 15px;
+    }
+    .step_section .steps .radio_group .radio_list li ul li label {
+        flex: 1;
+        margin-left:0px;
+        padding-left: 10px;
+    }
+    .step_section .steps .radio_group .radio_list li ul li {
+        display: flex;
+    }
+    .step_section .steps .range_box {
+        max-width: 100%;
+    }
+    .step_section .steps .range_box .form-control {
+        width: 114px;
+    }
+    .step_section .steps .planner_form {
+        width: 100%;
+    }
+    .step_section .steps .form-group {
+        width: 100%;
+    }
+    .step_section .steps .events_section {
+        flex-direction: column;
+    }
+    .step_section .steps .events_section {
+        flex-direction: column;
+    }
+    .step_section .steps .events_section .events_box {
+        width: 100%;
+     }
+     .step_section .steps .events_section .events_box a {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .step_section .guest_box ul {
+        flex-wrap: wrap;
+    }
+    .events_service_section .events_box {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0px;
+    }
+    .venue_box .venue_btn .venue_select {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+    }
+}
+

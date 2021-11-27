@@ -1,0 +1,138 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="inner-content" *ngIf="vendorData">
+            <div class="left_sidebar">
+                <div class="vendor_box">
+                    <div class="vendor_thumb">
+                        <div class="thumbnail" style="background: url({{vendorData.profileImage}});"></div>
+
+                    </div>
+                    <div class="vendor-details ">
+                        <h3>{{vendorData.profileName}}</h3>
+                        <span class="expertise">{{vendorData.experiencePlanning}}</span>
+                        <span class="location">{{vendorData.location}}</span>
+                    </div>
+                    <div class="vendor_bottom">
+                        <a href="javascript:void(0)" (click)="goToProduct()" class="btn"
+                            *ngIf="vendorData.type==2">Select <span></span></a>
+                        <a href="javascript:void(0)" class="btn" (click)="goToProduct()" *ngIf="vendorData.type==1">View
+                            Services <span></span></a>
+                    </div>
+                </div>
+                <div class="back_to_vendor">
+                    <a href="javascript:void(0)" class="back_vendors" (click)="backToVendor()">Back to Vendor list</a>
+                </div>
+            </div>
+            <div class="main_content" *ngIf="vendorData.projectImage.length!=0">
+                <div class="banner_inner">
+                    <owl-carousel-o [options]="customOptions" #owl>
+                        <ng-template carouselSlide *ngFor="let item of vendorData.projectImage">
+                            <div class="item">
+                                <img [src]="item.image" alt="" class="banner_right" *ngIf="item.image.length!=0">
+                            </div>
+                            <div class="bottom_text_box">
+                                <div class="bottom_text" *ngIf="item.image.length!=0">
+                                    <span>{{item.event}}</span>
+                                    <span>{{item.numberAttendees}}</span>
+                                    <span>{{item.locationEvent}}</span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </owl-carousel-o>
+                    <div class="owl_nav" *ngIf="vendorData&&vendorData.projectImage.length!=1">
+                        <a class="owl_nav_left" (click)="owl.prev()"><img src="/assets/images/arrow_left.png" alt="">
+                        </a>
+                        <a class="owl_nav_right" (click)="owl.next()"><img src="/assets/images/arrow_right.png"
+                                alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blogs_page" *ngIf="vendorData?.blogs.length!=0">
+    <div class="container">
+        <div class="blog_heading">
+            <h2>Blog</h2>
+        </div>
+        <div class="blog_inner">
+            <div class="blog_left">
+                <div class="blog_lists">
+                    <div class="blog_box" *ngFor="let blog of vendorData?.blogs">
+                        <div class="blog_thumbnail" style="background:url({{blog.file}});">
+                        </div>
+                        <div class="blog_content">
+                            <h4><a href="javascript:void(0)" (click)="goToBlogDetail(blog.id)">{{blog.title}}</a>
+                            </h4>
+                            <p [innerHTML]="blog.description | slice:0:300"></p>
+                            <div class="meta">
+                                <span>{{blog.created_at | date:'longDate' }}</span>
+
+                                <a href="javascript:void(0)" *ngIf="blog.description.length>300"
+                                    (click)="goToBlogDetail(blog.id)">Read More..</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="review_section" *ngIf="!reviewAlready||isEditReview">
+    <div class="container">
+        <div class="review_section_inner">
+            <div class="write_review_section_box">
+                <h5>What People Are Saying</h5>
+                <form [formGroup]="commentForm">
+                    <div class="rating">
+                        <ul>
+                            <li [ngClass]="{'fill': rating.active,'blank' : !rating.active}" (click)="setRating(i+1)"
+                                *ngFor="let rating of ratingArr; let i =index;" class="fill">
+                            </li>
+
+                        </ul>
+                        <div class="form-group">
+                            <textarea placeholder="Comment" formControlName="comment"></textarea>
+
+                        </div>
+                        <div class="submit_review">
+                            <a href="javascript:void(0)" class="btn btn-primary"
+                                [ngClass]="{'disabled': commentForm.invalid}" (click)="submitReview()">Write
+                                a Review</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="review_section" *ngIf="vendorData?.review!=0">
+    <div class="container">
+        <div class="review_section_inner">
+            <h5>Review</h5>
+            <div class="review_section_box" *ngFor="let review of vendorData?.review">
+                <div class="review_section_contant">
+                    <div class="profile" style="background:url({{review.profileImage}});">
+                    </div>
+                    <div class="main_contant">
+                        <h4>{{review.name}} <span>{{review.created_at|date:'fullDate'}}</span>
+                            <a href="javascript:void(0)" *ngIf="review.customerId==currentUser.id"
+                                (click)="editReview(review)" class="edit_comment">Edit</a></h4>
+                        <div class="rating">
+                            <ul>
+                                <li [ngClass]="{'fill': rating.active,'blank' : !rating.active}"
+                                    *ngFor="let rating of review.reviewRating" class="fill"></li>
+                            </ul>
+
+                        </div>
+                        <p>{{review.comment}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->

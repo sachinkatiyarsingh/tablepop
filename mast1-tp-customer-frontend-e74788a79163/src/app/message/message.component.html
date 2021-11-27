@@ -1,0 +1,50 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="message_section">
+    <div class="container">
+
+        <div class="chat_wrap">
+            <div class="chat_sidebar" #sidebar infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+                (scrolled)="getMoreSellers()" [scrollWindow]="false">
+                <div class="user_chat_box" *ngFor="let seller of sellerList;  let i =index ">
+                    <span class="date">{{seller.messageDate | date:'longDate'}}</span>
+                    <div class="user_chat_box_inner" (click)="selectSeller(seller)"
+                        [ngClass]="{'active':seller===selectedSeller }">
+                        <div class="thumbnail" style="background: url({{seller.profileImage}});">
+                        </div>
+                        <div class="chat_sidebox">
+                            <h4>{{seller.name}}<span>{{seller.messageDate | date:'shortTime'}}</span>
+                            </h4>
+                            <p>{{seller.message}}</p>
+                            <div class="chat_control">
+                                <div class="chat_control_inner" (click)="viewProfile=!viewProfile">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="view_profile" *ngIf="viewProfile">
+                                    <ul *ngIf="seller===selectedSeller">
+                                        <li>
+                                            <a *ngIf="seller.type==0" href="javascript:void(0)"
+                                                (click)="view_profile(seller.questionnaireId)"> View Profile</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification" *ngIf="seller.nm">{{seller.nm}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat_messages" *ngIf="isSelectSeller">
+                <div class="event_name" *ngFor="let seller of sellerList;">
+                    <h4 *ngIf="seller===selectedSeller ">{{seller.name}}</h4>
+                </div>
+                <app-chat-box [groupId]="selectedSeller.groupId" (getNotification)="AddNotification($event)">
+                </app-chat-box>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

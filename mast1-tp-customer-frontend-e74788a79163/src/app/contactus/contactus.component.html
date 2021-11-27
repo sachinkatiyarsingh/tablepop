@@ -1,0 +1,51 @@
+<!-- <app-header [headerClass]=""></app-header> -->
+<section class="contact_section">
+    <div class="container">
+        <div class="contact_inner">
+            <div class="contact_left">
+                <h3>We’d love to connect to see how best we can serve you.</h3>
+                <p>Please call us at <a href="tel:(646)960-1992">(646)960-1992</a> or
+                    email us directly at <a href="mailto:hi@tablepop.co">hi@tablepop.co</a></p>
+                <p><strong>Mon - Sat: 10am - 6pm EST</strong></p>
+                <a href="{{calendly}}" class="btn btn-default">Schedule a Call
+                    <img src="/assets/images/arrow@2x.png" alt="" class="arrow">
+                </a>
+            </div>
+            <div class="contact_right">
+                <form [formGroup]="contactForm">
+                    <div class="contact_form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Full Name"
+                                formControlName="name" />
+                            <span class="error"
+                                *ngIf="contactForm.controls['name'].touched && contactForm.controls['name'].hasError('required')">Name
+                                is Required</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Email" formControlName="email" />
+                            <span class="error"
+                                *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].hasError('required')">Email
+                                is Required</span>
+                            <span class="error"
+                                *ngIf="contactForm.controls['email'].touched && contactForm.controls['email'].hasError('email')">Enter
+                                a valid email</span>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message"
+                                formControlName="message"></textarea>
+                            <span class="error"
+                                *ngIf="contactForm.controls['message'].touched && contactForm.controls['message'].hasError('required')">Message
+                                is Required</span>
+                        </div>
+                        <div class="submit_btn">
+                            <a href="javascript:void(0)" class="btn btn-default" (click)="submit()"
+                                [ngClass]="{'disabled': contactForm.invalid}">Send</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

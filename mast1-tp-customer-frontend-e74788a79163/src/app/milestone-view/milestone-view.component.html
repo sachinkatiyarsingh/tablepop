@@ -1,0 +1,32 @@
+<!-- <app-header></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="customer_table">
+            <div class="customer_table_list">
+                <div class="table-responsive">
+                    <table>
+                        <tr *ngFor="let milestone of milestones  ">
+                            <td><img src="/assets/images/message.png" alt=""> </td>
+                            <td>{{milestone.description}}</td>
+                            <td>
+                                <span *ngIf="milestone.status==0">Ongoing</span>
+                                <a *ngIf="milestone.status==1" (click)="changestatus(milestone)"
+                                    class="btn btn-primary">Approve</a>
+                                <span *ngIf="milestone.status==2">Approved</span>
+                                <span *ngIf="milestone.status==3">Paid </span>
+                                <!-- {{milestone.status==0?'Ongoing':milestone.status==2?'Approved ':milestone.status==3?'Paid':''}} -->
+                            </td>
+                            <td>{{milestone.amount}}</td>
+                            <!-- <td class="plan_btn"><a href="javascript:void(0)" *ngIf="milestone.status==0"
+                                (click)="changestatus(milestone)">Change
+                                Status</a>
+                        </td> -->
+                        </tr>
+                    </table>
+                </div>
+                <!-- <app-paginator [pageSize]="pageOpts.PageSize" [pageLength]="totalPage"
+                    [pageNumber]="pageOpts.PageNumber" (onPageSelect)="PageSelect($event)"></app-paginator> -->
+            </div>
+        </div>
+    </div>
+</section>

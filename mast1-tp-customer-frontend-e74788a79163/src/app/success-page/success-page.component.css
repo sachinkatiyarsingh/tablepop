@@ -1,0 +1,38 @@
+.step_section .congratulation_box {
+    padding: 40px 0px;
+}
+
+.step_section .congratulation_box .congratulation_section {
+    display: flex;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left {
+    flex: 1;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left h4 {
+    font-size: 55px;
+    padding-bottom: 20px;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left p {
+    max-width: 380px;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_left a {
+    background: #F4FAFB;
+    border: 1px solid #000;
+    padding: 20px 20px;
+    display: inline-block;
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_right {
+    flex: 1;
+}
+
+.step_section .congratulation_box .congratulation_section .congratulation_right img {
+    width: 100%;
+}

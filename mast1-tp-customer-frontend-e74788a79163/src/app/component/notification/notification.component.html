@@ -1,0 +1,34 @@
+<div class="notification_dropdown">
+    <div class="triangle"></div>
+
+    <div class="subject">
+        <span class="message"> Notifications</span>
+
+        <span class="link">View All</span>
+    </div>
+    <div class="container" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
+        (scrolled)="getMoreNotification()" [scrollWindow]="false">
+        <div [hidden]="noRecordFound" *ngFor="let notification of notificationData;let i=index;"
+            (click)="replyRequest(notification)" [ngClass]="{'last':i+1==notificationData.length}">
+            <div class="icon_thumb">
+                <div class="icon">
+                    <div class="thumbnail" *ngIf="notification.image.length == 0"
+                        style="background: url(assets/images/avatar.png);">
+
+                    </div>
+                    <div class="thumbnail" *ngIf="notification.image.length!=0"
+                        style="background: url({{notification.image}});">
+
+                    </div>
+                </div>
+            </div>
+            <div class="content">{{notification.notification}}
+                <div class="time">5 hours ago</div>
+            </div>
+
+        </div>
+        <div *ngIf="noRecordFound">
+            <p class="norecord">No New Notifications</p>
+        </div>
+    </div>
+</div>

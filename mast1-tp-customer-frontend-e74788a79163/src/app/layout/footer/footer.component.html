@@ -1,0 +1,76 @@
+<section class="rsvp_section" *ngIf="!isUserLogin">
+    <div class="container">
+        <div class="rsvp_form">
+            <h2>Join our mailing list,
+                RSVP here:</h2>
+            <form [formGroup]="subscriptionForm">
+                <div class="join_new_box">
+                    <input type="text" class="form-control" placeholder="" formControlName="email" />
+                    <a href="javascript:void(0)" [ngClass]="{'disabled': subscriptionForm.invalid}"
+                        (click)="submit()">Join</a>
+                </div>
+            </form>
+            <span class="error"
+                *ngIf="subscriptionForm.controls['email'].touched && subscriptionForm.controls['email'].hasError('email')">Enter
+                a valid email</span>
+        </div>
+    </div>
+</section>
+<footer>
+
+    <div class="container">
+        <div class="footer">
+            <div class="footer_left">
+                <div class="social-icon">
+                    <ul>
+                        <li><a href="/"><img src="/assets/images/fb.png" alt="" /></a></li>
+                        <li><a href="/"><img src="/assets/images/instagram.png" alt="" /></a></li>
+                        <li><a href="/"><img src="/assets/images/pintrest.png" alt="" /></a></li>
+                    </ul>
+                    <div class="button_box ">
+                        <a href="{{calendly}}" class="btn btn-default">Schedule a Call
+                            <img src="/assets/images/arrow@2x.png" alt="" class="arrow">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_right">
+                <div class="footer_logo">
+                    <a href="/">
+                        <img src="/assets/images/logo.svg" alt="" />
+                    </a>
+                </div>
+                <div class="newsletter_box">
+                    <input type="text" class="form-control" placeholder="Tell us how we can help" />
+                    <div class="mail_icon">
+                        <a href="mailto:support@tablepop.com"> <img src="/assets/images/mail.png" alt="" /></a>
+                    </div>
+                </div>
+                <div class="footer_nav">
+                    <ul>
+                        <li><a href="/findaplanner">Plan an event</a></li>
+                        <li><a href="/howsitworks">How it works</a></li>
+                        <li><a href="/ourstory">Our story</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="/workwithus">Event Pros</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/contactus">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="scroll_top">
+                <a href="javascript:void(0)" (click)="goToTop()" id="top">
+                    <img src="/assets/images/arrow_top.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright_text">
+            <span>&copy; TablePop® 2020. All Rights Reserved. |<a href="/assets/images/terms.pdf" target="_blank">Terms
+                    and Conditions</a> | <a href="/assets/images/privacy.pdf" target="_blank">Privacy Policy</a></span>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,31 @@
+<!-- <app-header [headerClass]="'light theme'"></app-header> -->
+<section class="faq_section">
+    <div class="faq_inner">
+        <h2>FAQ</h2>
+    </div>
+    <div class="container">
+        <div class="faq_inner">
+            <div class="faq_banner"></div>
+        </div>
+    </div>
+
+</section>
+
+<section class="faq_questions" *ngIf="faqData">
+    <div class="container">
+        <div class="faq_block">
+            <div class="faq_q_block" *ngFor="let faqs of faqData; let i = index;" (click)="steps(i)">
+                <div class="faq_que" [ngClass]="{'active': visibleIndex  === i}">
+                    <h4>{{faqs.question}}</h4>
+                </div>
+                <div class="faq_ans" *ngIf="visibleIndex === i">
+                    <p [innerHtml]="faqs.answer"></p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

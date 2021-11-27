@@ -1,0 +1,325 @@
+.signupmodal {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.65);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 99;
+  padding: 40px 0px;
+  height: 100vh;
+  overflow: auto;
+}
+
+.signupmodal.full {}
+
+.signupmodal .inner_modal {}
+
+.signupmodal .inner_modal .header_modal {
+  display: flex;
+}
+
+.signupmodal .inner_modal .header_modal a.close {
+  flex: 1;
+  text-align: right;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.signupmodal .inner_modal .header_modal a.close img {
+  max-width: 35px;
+}
+
+.signupmodal .inner_modal {
+  max-width: 1100px;
+  margin: 0px auto;
+  position: relative;
+  z-index: 9;
+  background: #faefeb;
+  padding: 40px;
+}
+
+.signupmodal .inner_modal .signup_modal {
+  display: flex;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_left {
+  flex: 1;
+  max-width: 45%;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_left img {
+  width: 100%;
+  max-width: 450px
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right {
+  flex: 1;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right {}
+
+.remember_box {
+  padding-bottom: 15px;
+}
+
+.remember_box input {}
+
+.remember_box label {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.remember_box label a {
+  color: #6D0202;
+  text-decoration: underline;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right h3 {
+  font-size: 54px;
+  color: #6D0202;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right p {
+  font-weight: 400;
+  font-size: 20px;
+
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right h2 {
+  font-size: 42px;
+  padding-bottom: 10px;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form {
+  padding-top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form select {
+  border: 1px solid #000000;
+  background: #e9effe;
+  height: 45px;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .col-2 {
+  width: 49% !important;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form p {}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .form-group input {
+  border: 1px solid #000000;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .forgot_link {
+  margin-bottom: 20px;
+  margin-top: -12px;
+  width: 100%;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .forgot_link a {
+  color: #000;
+  font-weight: 100;
+  font-size: 15px;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .form-group .error {
+  display: block;
+  font-size: 11px;
+  padding-top: 5px;
+  color: #f00;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .login_btn {
+  width: 100%;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form .login_btn a {
+  background: #6D0202;
+  text-align: center;
+  display: block;
+  color: #fff;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form p {
+  font-size: 13px;
+  padding-top: 5px;
+  width: 100%;
+  margin: 0px;
+  text-align: center;
+}
+
+.signupmodal .inner_modal .signup_modal .signup_right .signup_form p a {
+  color: #6D0202;
+}
+
+.bottom_navs {}
+
+.bottom_navs .bottom_menus {}
+
+.bottom_navs .bottom_menus .bottm_menus_ul {
+  display: flex;
+  border-top: 1px solid #000;
+  padding-top: 18px;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.bottom_navs .bottom_menus .bottm_menus_ul .li {
+  margin-right: 0px;
+  margin-left: 60px;
+}
+
+.bottom_navs .bottom_menus .bottm_menus_ul .li a {
+  color: #000;
+  font-size: 14px;
+}
+
+.social_login {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.social_login .social_login_google {
+  flex: 1;
+  background: #dc4e41;
+  max-width: 49%;
+  padding: 10px 3px;
+  box-sizing: border-box;
+}
+
+.social_login .social_login_google a {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  padding: 0px 20px;
+}
+
+.social_login .social_login_google a img {
+  max-width: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.social_login .social_login_fb {
+  flex: 1;
+  background: #45619d;
+  max-width: 49%;
+  padding: 10px 3px;
+  box-sizing: border-box;
+  
+}
+
+.social_login .social_login_fb a {
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  box-sizing: border-box;
+  padding: 0px 20px;
+}
+
+.social_login .social_login_fb a img {
+  max-width: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.continue .modal_inner{
+  background: #fff;
+  position: relative;
+}
+.modal.continue .modal_inner .modal_header a.close{
+  right: -35px;
+  top: -35px;
+}
+
+ .continue .modal_inner:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 220px;
+  background: #ddebee;
+}
+
+.login_left {}
+
+.login_left h3 {
+  font-size: 86px;
+  font-weight: 400;
+  line-height: 80px;
+}
+
+.already_member {
+  display: flex;
+}
+
+.already_member .already_member_inner {
+  flex: 1;
+  padding: 90px 0px 20px;
+}
+
+.already_member .already_member_inner span {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.already_member .already_member_inner h4 {
+  font-size: 23px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.skip {
+  padding-top: 17px;
+}
+
+.skip span {
+  font-size: 23px;
+}
+
+.skip span img {
+  max-width: 22px;
+  align-items: center;
+  vertical-align: middle;
+}
+.top_header{
+  background: #bcd9de;
+  margin-bottom: 20px;
+}
+
+.top_header ul{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px 0px;
+}
+.top_header ul li{
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 13px;
+}
+.top_header ul li a{
+  color: #fff;
+    display: block;
+}

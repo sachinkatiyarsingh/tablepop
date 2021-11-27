@@ -1,0 +1,847 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="step_section step_one" *ngIf="step==1">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="container">
+        <div class="steps">
+            <h3>Which level of service do you require?</h3>
+            <div class="radio_group">
+                <ul class="radio_list">
+                    <li>
+                        <span class="radio" [ngClass]="{'active':questiondata.levelOfService=='eventPlanner' }"
+                            (click)="selectlevel('eventPlanner')"></span><label (click)="selectlevel('eventPlanner')">I
+                            am
+                            looking to hire an event planner</label>
+                        <ul *ngIf="questiondata.levelOfService=='eventPlanner'">
+                            <li>
+                                <span class="radio" (click)="selectlevelPlanning('virtual')"
+                                    [ngClass]="{'active':questiondata.levelOfServicePlanningType=='virtual'}"></span>
+                                <label (click)="selectlevelPlanning('virtual')">Virtual Planner (help in select
+                                    areas)</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectlevelPlanning('in-person')"
+                                    [ngClass]="{'active':questiondata.levelOfServicePlanningType=='in-person'}"></span>
+                                <label (click)="selectlevelPlanning('in-person')">In-person Planner (start to
+                                    finish help)</label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="radio" [ngClass]="{'active':questiondata.levelOfService=='eventMyself'}"
+                            (click)="selectlevel('eventMyself')"></span>
+                        <label (click)="selectlevel('eventMyself')">I am planning the event myself</label>
+                        <ul *ngIf="questiondata.levelOfService=='eventMyself'">
+                            <li>
+                                <span class="radio" (click)="selectlevelPlanning('book')"
+                                    [ngClass]="{'active':questiondata.levelOfServicePlanningType=='book'}"></span>
+                                <label (click)="selectlevelPlanning('book')">Book pros / vendors</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectlevelPlanning('rent')"
+                                    [ngClass]="{'active':questiondata.levelOfServicePlanningType=='rent'}"></span>
+                                <label (click)="selectlevelPlanning('rent')">Rent from vendors</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>5%</span>
+                    <div class="progress_bar">
+                        <div class="bar"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0);"
+                        [ngClass]="{'disabled': (!questiondata.levelOfServicePlanningType) && (questiondata.levelOfService=='in-person'||'online')}"
+                        class="btn btn-primary" (click)="gotoStep(2)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_eight" *ngIf="step==2">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(1)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>What type of event are you planning?
+            </h3>
+            <div class="events_section">
+                <div class="events_box">
+                    <a href="javascript:void(0)" class="event_type_box" (click)="selectEventPlanning('personal')"
+                        [ngClass]="{'active':questiondata.eventPlanning=='personal'}">Personal </a>
+                    <div class="radio_group" *ngIf="questiondata.eventPlanning=='personal'">
+                        <ul class="radio_list">
+                            <li>
+                                <ul *ngIf="isEventType">
+                                    <li *ngFor="let personal of isEventType.personal">
+                                        <span class="radio" (click)="selectTypeEvent(personal.id)"
+                                            [ngClass]="{'active':questiondata.typeEvent==personal.id}"></span><label
+                                            (click)="selectTypeEvent(personal.id)"> {{personal.name}} </label>
+                                    </li>
+                                    <li>
+                                        <span class="radio" (click)="questiondata.typeEvent='other'"
+                                            [ngClass]="{'active': questiondata.typeEvent=='other'}"></span>
+                                        <label (click)="questiondata.typeEvent='other'">Other</label>
+                                        <input type="text" class="form-control other_input" placeholder=""
+                                            *ngIf="questiondata.typeEvent=='other'"
+                                            [(ngModel)]="questiondata.eventPlanningOther" />
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="events_box">
+                    <a href="javascript:void(0)" class="event_type_box" (click)="selectEventPlanning('corporate')"
+                        [ngClass]="{'active':questiondata.eventPlanning=='corporate'}">Corporate</a>
+                    <div class="radio_group" *ngIf="questiondata.eventPlanning=='corporate'">
+                        <ul class="radio_list">
+                            <li>
+                                <ul *ngIf="isEventType">
+                                    <li *ngFor="let corporate of isEventType.corporate">
+                                        <span class="radio" (click)="selectTypeEvent(corporate.id)"
+                                            [ngClass]="{'active':questiondata.typeEvent==corporate.id}"></span><label
+                                            (click)="selectTypeEvent(corporate.id)">{{corporate.name}} </label>
+                                    </li>
+                                    <li>
+                                        <span class="radio" (click)="questiondata.typeEvent='other'"
+                                            [ngClass]="{'active': questiondata.typeEvent=='other'}"></span>
+                                        <label (click)="questiondata.typeEvent='other'">Other</label>
+                                        <input type="text" class="form-control other_input" placeholder=""
+                                            *ngIf="questiondata.typeEvent=='other'"
+                                            [(ngModel)]="questiondata.eventPlanningOther" />
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="events_box">
+                    <a href="javascript:void(0)" class="event_type_box" (click)="selectEventPlanning('social')"
+                        [ngClass]="{'active':questiondata.eventPlanning=='social'}">Social</a>
+                    <div class="radio_group" *ngIf="questiondata.eventPlanning=='social'">
+                        <ul class="radio_list">
+                            <li>
+                                <ul *ngIf="isEventType">
+                                    <li *ngFor="let social of isEventType.social">
+                                        <span class="radio" (click)="selectTypeEvent(social.id)"
+                                            [ngClass]="{'active':questiondata.typeEvent==social.id}"></span><label
+                                            (click)="selectTypeEvent(social.id)"> {{social.name}} </label>
+                                    </li>
+                                    <li>
+                                        <span class="radio" (click)="questiondata.typeEvent='other'"
+                                            [ngClass]="{'active': questiondata.typeEvent=='other'}"></span>
+                                        <label (click)="questiondata.typeEvent='other'">Other</label>
+                                        <input type="text" class="form-control other_input" placeholder=""
+                                            *ngIf="questiondata.typeEvent=='other'"
+                                            [(ngModel)]="questiondata.eventPlanningOther" />
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>15%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:15%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.eventPlanning||!questiondata.typeEvent }"
+                        (click)="gotoStep(3)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_six" *ngIf="step==3">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(2)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>Event Location?</h3>
+            <div class="planner_form">
+                <input autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" type="text"
+                    [(ngModel)]="questiondata.confirmationPartyPlanner" placeholder="Search City"
+                    (input)="onSearchChange($event, search)" #search (keydown.enter)="onSearchChange($event, search)">
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>30%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:30%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.confirmationPartyPlanner||!questiondata.latitude}"
+                        (click)="gotoStep(4)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_nine" *ngIf="step==4">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(3)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <div class="guest_box">
+                <ul>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='0-25'}"
+                            (click)="selectGuest('0-25')"></span>
+                        <p (click)="selectGuest('0-25')">25 guests or fewer</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='26-50'}"
+                            (click)="selectGuest('26-50')"></span>
+                        <p (click)="selectGuest('26-50')">26-50</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='51-100'}"
+                            (click)="selectGuest('51-100')"></span>
+                        <p (click)="selectGuest('51-100')">51-100</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='101-200'}"
+                            (click)="selectGuest('101-200')"></span>
+                        <p (click)="selectGuest('101-200')">101-200</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='201-300'}"
+                            (click)="selectGuest('201-300')"></span>
+                        <p (click)="selectGuest('201-300')">201-300</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='301-400'}"
+                            (click)="selectGuest('301-400')"></span>
+                        <p (click)="selectGuest('301-400')">301-400</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='401-500'}"
+                            (click)="selectGuest('401-500')"></span>
+                        <p (click)="selectGuest('401-500')">401-500</p>
+                    </li>
+                    <li>
+                        <span [ngClass]="{'active':questiondata.guestExpect=='500+'}"
+                            (click)="selectGuest('500+')"></span>
+                        <p (click)="selectGuest('500+')">500+</p>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>45%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:45%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.guestExpect}" (click)="gotoStep(5)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_ten" *ngIf="step==5">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(4)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>How far away is your event?</h3>
+            <div class="radio_group">
+                <ul class="radio_list">
+                    <li>
+                        <ul>
+                            <li>
+                                <span class="radio" [ngClass]="{'active':questiondata.farEvent=='exact'}"
+                                    (click)="selectFarEvent('exact')"></span><label
+                                    (click)="selectFarEvent('exact')">Exact
+                                    Date (enter)</label>
+                            </li>
+                            <li class="other" *ngIf="questiondata.farEvent=='exact'">
+                                <dp-date-picker theme="dp-material" [config]="datePickerConfig" required="true"
+                                    [(ngModel)]="questiondata.farEventDate" placeholder="dd/mm/yy">
+                                </dp-date-picker>
+                            </li>
+                            <li>
+                                <span class="radio" [ngClass]="{'active':questiondata.farEvent=='future'}"
+                                    (click)="selectFarEvent('future')"></span><label
+                                    (click)="selectFarEvent('future')">I am not sure</label>
+                                <ul *ngIf="questiondata.farEvent=='future'" style="padding-left:25px;">
+                                    <li>
+                                        <span class="radio"
+                                            [ngClass]="{'active':questiondata.farEventDate=='next-month'}"
+                                            (click)="selectFuture('next-month')"></span><label
+                                            (click)="selectFuture('next-month')">In the next few months </label>
+                                    </li>
+                                    <li>
+                                        <span class="radio" [ngClass]="{'active':questiondata.farEventDate=='3-6month'}"
+                                            (click)="selectFuture('3-6month')"></span><label
+                                            (click)="selectFuture('3-6month')">6 months to a year +</label>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>50%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:50%"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.farEventDate}" (click)="gotoStep(6)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_five" *ngIf="step==6">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(5)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>What best describes your budget?</h3>
+            <div class="radio_group">
+                <ul class="radio_list">
+                    <li>
+                        <ul>
+                            <li>
+                                <span class="radio" (click)="selectPremiumEvent('low-min')"
+                                    [ngClass]="{'active':questiondata.premiumEvent=='low-min'}"></span><label
+                                    (click)="selectPremiumEvent('low-min')">Budget-friendly to Mid-range
+                                </label>
+                            </li>
+                            <li>
+                                <span class="radio" [ngClass]="{'active':questiondata.premiumEvent=='mid-high'}"
+                                    (click)="selectPremiumEvent('mid-high')"></span><label
+                                    (click)="selectPremiumEvent('mid-high')">Mid-range
+                                    to high-end</label>
+                            </li>
+                            <li>
+                                <span class="radio" [ngClass]="{'active':questiondata.premiumEvent=='high-luxury'}"
+                                    (click)="selectPremiumEvent('high-luxury')"></span><label
+                                    (click)="selectPremiumEvent('high-luxury')">High-end to
+                                    Luxury</label>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>60%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:60%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.premiumEvent}" (click)="gotoStep(7)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_twelve" *ngIf="step==7">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(6)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>If you already have a venue, where is it?
+            </h3>
+            <div class="venue_box">
+                <div class="venue_btn">
+                    <div class="venue_box">
+                        <div class="venue_select" [ngClass]="{'active':questiondata.vennu=='yes'}"
+                            (click)="selectVannue('yes')">Yes</div>
+                        <div class="radio_group" *ngIf="questiondata.vennu=='yes'">
+                            <ul class="radio_list">
+                                <li>
+                                    <ul>
+                                        <li>
+                                            <span class="radio" (click)="selectvenue('indoor')"
+                                                [ngClass]="{'active':questiondata.vennuValue=='indoor'}"></span><label
+                                                (click)="selectvenue('indoor')">Indoor venue
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <span class="radio" (click)="selectvenue('outdoor')"
+                                                [ngClass]="{'active': questiondata.vennuValue=='outdoor'}"></span><label
+                                                (click)="selectvenue('outdoor')">Outdoor venue</label>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="venue_box">
+                        <div class="venue_select" [ngClass]="{'active':questiondata.vennu=='no'}"
+                            (click)="selectVannue('no')">No, I need one</div>
+                        <div class="radio_group" *ngIf="questiondata.vennu=='no'">
+                            <ul class="radio_list">
+                                <li>
+                                    <ul *ngIf="venue">
+                                        <li *ngFor="let venue of venue">
+                                            <span class="radio" (click)="selectvenue(venue.id)"
+                                                [ngClass]="{'active':questiondata.vennuValue==venue.id}"></span><label
+                                                (click)="selectvenue(venue.id)">{{venue.name}}
+                                            </label>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="venue_box">
+                        <div class="venue_select" [ngClass]="{'active':questiondata.vennu=='virtual'}"
+                            (click)="selectVannue('virtual')">Virtual</div>
+                    </div>
+                </div>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>70%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:70%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.vennu || (questiondata.vennu!=='virtual'&&!questiondata.vennuValue)}"
+                        (click)="gotoStep(8)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_eleven" *ngIf="step==8">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(7)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>What services would you like? Select all that apply
+            </h3>
+            <div class="events_section" *ngIf="serviceCategory">
+                <div class="events_box" *ngFor="let category of serviceCategory; let i=index;"
+                    [ngClass]="{'active':questiondata.partyPlaningServiceCatgeory.indexOf(category.id)>-1}">
+                    <a href="javascript:void(0)" class="event_type_box" (click)="selectCategory(category.id,i)">
+                        {{category.category}} </a>
+                    <div class="radio_group" *ngIf="selectedIndex==i">
+                        <ul class="radio_list">
+                            <li>
+                                <ul>
+                                    <li *ngFor="let subCategory of serviceSubCategory;">
+                                        <span class="checkbox"
+                                            [ngClass]="{'active':questiondata.partyPlaningServiceSubCatgeory.indexOf(subCategory.id)>-1}"
+                                            (click)="selectSubCategory(subCategory.id)"></span>
+                                        <label (click)="selectSubCategory(subCategory.id)">
+                                            {{subCategory.subCategory}}</label>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>80%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:80%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary" (click)="gotoStep(9)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_thirteen" *ngIf="step==9">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(8)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <h3>Is there a specific theme for this event?</h3>
+            <div class="radio_group">
+                <ul class="radio_list">
+                    <li>
+                        <ul *ngIf="themes">
+                            <li *ngFor="let theme of themes">
+                                <span class="radio" (click)="selectTheme(theme)"
+                                    [ngClass]="{'active':questiondata.themeEvent==theme.id}"></span>
+                                <label (click)="selectTheme(theme)">{{theme.name}}
+                                </label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="questiondata.themeEvent= 'theme-other'"
+                                    [ngClass]="{'active':questiondata.themeEvent=='theme-other'}"></span><label
+                                    (click)="questiondata.themeEvent= 'theme-other'">Other</label>
+                                <input type="text" class="form-control other_input" placeholder=""
+                                    *ngIf="questiondata.themeEvent=='theme-other'"
+                                    [(ngModel)]="questiondata.themeEventOther" />
+                            </li>
+                            <li>
+                                <span class="radio" (click)="questiondata.themeEvent= 'notheme '"
+                                    [ngClass]="{'active':questiondata.themeEvent=='notheme '}"></span><label
+                                    (click)="questiondata.themeEvent= 'notheme '">No specific theme</label>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>90%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.themeEvent}" (click)="gotoStep(10)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_fourteen" *ngIf="step==10">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(9)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <form>
+                <div class="form-group">
+                    <label>Would you like to add photos to describe your vision for
+                        the event?</label>
+                    <div class="attach_image">
+                        <span>Attach Photo</span>
+                        <input type="file" accept="image/*" class="form-control" multiple="true" #pf
+                            (change)="fileChangeListener(pf.files,pf)" placeholder="Attach Photos" />
+
+                    </div>
+                    <div class="uploaded_images"
+                        *ngIf="(questiondata.selectedFile&&questiondata.selectedFile.length)||(questiondata.addPhotos&&questiondata.addPhotos.length)">
+                        <div class="selected-img" *ngFor="let logoImg of questiondata.addPhotos;let i=index">
+                            <img class="preview_image" [src]="logoImg.image" alt="">
+                            <a href="javascript:void(0)" class="close" (click)="removeUImage(i,logoImg.id)">
+                                <img src="/assets/images/delete.png" alt="" />
+                            </a>
+                        </div>
+                        <div class="selected-img" *ngFor="let logoImg of questiondata.selectedFile;let i=index">
+                            <img class="preview_image" [src]="logoImg" alt="">
+                            <a href="javascript:void(0)" class="close" (click)="removeImage(i)">
+                                <img src="/assets/images/delete.png" alt="" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Do you have a Pinterest board for your ideas? (optional)</label>
+                    <input type="url" class="form-control" name="weddindIdeas" (keyup)="validateUrl()"
+                        [(ngModel)]="questiondata.weddindIdeas" placeholder="Share link" />
+                    <span class="error" *ngIf="questiondata.weddindIdeas&&!questiondata.validUrl">Enter valid Url</span>
+                </div>
+                <div class="form-group">
+                    <label>Anything else the planner should know? (optional) </label>
+                    <textarea name="" id="" cols="30" rows="10" name="anytningPartyPlanner"
+                        [(ngModel)]="questiondata.anytningPartyPlanner" class="form-control"></textarea>
+                </div>
+            </form>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>95%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':questiondata.weddindIdeas&&!questiondata.validUrl}"
+                        (click)="gotoStep(11)">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_seven" *ngIf="step==11">
+    <div class="heading">
+        <div class="container">
+            <h4>Service + Budget + Scope</h4>
+        </div>
+    </div>
+    <div class="back_icon">
+        <div class="container">
+            <div class="back_arrow">
+                <a href="javascript:void(0);" (click)="gotoStep(10)">
+                    <img src="/assets/images/back_arrow.png" alt="" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="steps">
+            <form>
+                <div class="form-group">
+                    <label>Please enter your full name.</label>
+                    <input type="text" class="form-control" name="fullname" [(ngModel)]="questiondata.name"
+                        placeholder="First Name, Last Name" />
+                </div>
+                <div class="form-group">
+                    <label>Where should we send your matches?</label>
+                    <input type="text" class="form-control" name="email" (keyup)="validateEmail()"
+                        [(ngModel)]="questiondata.email" placeholder="Enter email address" />
+                    <span class="error" *ngIf="questiondata.email&&!questiondata.validEmail">Enter valid email</span>
+                </div>
+                <div class="form-group">
+                    <label>Get responses even faster with text alerts.</label>
+                    <input type="text" (keypress)="numberOnly($event)" class="form-control" #mobile="ngModel"
+                        [(ngModel)]="questiondata.mobile" placeholder="Mobile Number" ng2TelInput
+                        [ng2TelInputOptions]="{initialCountry: 'us'}" (ng2TelOutput)="getNumber($event)"
+                        (countryChange)="onCountryChange($event)" [ngModelOptions]="{standalone: true}"
+                        (hasError)="onError($event)" (keyup)="validateMobile()" />
+                    <!-- <span class="error" *ngIf="questiondata.mobile && !questiondata.validMobile && mobile.touched">Enter
+                        valid
+                        mobile</span> -->
+                    <span class="error" *ngIf="questiondata.mobile && !mobileValid && mobile.touched">Please
+                        Enter Valid Mobile Number</span>
+                </div>
+                <div class="form-group">
+                    <label>Give this event a name?</label>
+                    <input type="text" class="form-control" name="eventname" [(ngModel)]="questiondata.eventName"
+                        placeholder="Enter name" />
+                </div>
+            </form>
+            <label>How did you hear about TablePop?(optional) </label>
+            <div class="radio_group">
+                <ul class="radio_list">
+                    <li>
+                        <ul>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('facebook')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='facebook'}"></span>
+                                <label (click)="selectTableTop('facebook')">Facebook</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('instagram')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='instagram'}"></span>
+                                <label (click)="selectTableTop('instagram')">Instagram</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('google')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='google'}"></span>
+                                <label (click)="selectTableTop('google')">Google</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('friend')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='friend'}"></span>
+                                <label (click)="selectTableTop('friend')">Friends and Family</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('web')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='web'}"></span>
+                                <label (click)="selectTableTop('web')">Web review / article </label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('pinterest' )"
+                                    [ngClass]="{'active':questiondata.hearAbout=='pinterest'}"></span>
+                                <label (click)="selectTableTop('pinterest')">Pinterest</label>
+                            </li>
+                            <li>
+                                <span class="radio" (click)="selectTableTop('other')"
+                                    [ngClass]="{'active':questiondata.hearAbout=='other'}"></span>
+                                <label (click)="selectTableTop('other')">Other</label>
+                                <input type="text" class="form-control other_input" placeholder=""
+                                    *ngIf="questiondata.hearAbout=='other'" [(ngModel)]="questiondata.hearAboutOther" />
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="step_controls">
+                <div class="step_progress">
+                    <span>100%</span>
+                    <div class="progress_bar">
+                        <div class="bar" style="width:100%;"></div>
+                    </div>
+                </div>
+                <div class="next_btn">
+                    <a href="javascript:void(0)" class="btn btn-primary"
+                        [ngClass]="{'disabled':!questiondata.name||!questiondata.email||!questiondata.validEmail||!questiondata.eventName}"
+                        (click)="submit()">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="step_section step_fifteen" *ngIf="step==12">
+    <div class="heading">
+    </div>
+    <div class="container">
+        <div class="congratulation_box">
+            <div class="congratulation_section">
+                <div class="congratulation_left">
+                    <h4>Success</h4>
+                    <p>The TablePop team will get back to you on your event details with planners to choose from to
+                        start you exciting journey.</p>
+                    <a href="/" class="btn">Back to home page</a>
+                </div>
+                <div class="congratulation_right">
+                    <img src="/assets/images/cong.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

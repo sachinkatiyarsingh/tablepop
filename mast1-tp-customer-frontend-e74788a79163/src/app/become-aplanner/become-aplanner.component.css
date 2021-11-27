@@ -1,0 +1,12 @@
+.event_pro{    padding: 50px 0px;
+    background: #faefea;}
+.event_pro .event_pro_section{}
+.event_pro .event_pro_section .event_pro_inner{}
+.event_pro .event_pro_section .event_pro_inner .heading{text-align: center;}
+.event_pro .event_pro_section .event_pro_inner .heading h2{    padding-bottom: 11px;
+    font-size: 32px;
+    font-weight: 500;}
+.event_pro .event_pro_section .event_pro_inner .desciption{    text-align: center;}
+.event_pro .event_pro_section .event_pro_inner .desciption p{font-size: 17px;
+    max-width: 750px;
+    margin: 0px auto}

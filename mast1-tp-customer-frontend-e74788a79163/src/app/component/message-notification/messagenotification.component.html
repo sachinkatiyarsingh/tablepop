@@ -1,0 +1,33 @@
+<div class="notification_dropdown">
+    <div class="triangle"></div>
+
+    <div class="subject">
+        <span class="message"> Message</span>
+        <span class="link" (click)="goToMessage()"> View All </span>
+    </div>
+    <div class="container" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
+        (scrolled)="getMoreMessage()" [scrollWindow]="false">
+        <div [hidden]="noRecordFound" class="message_block" *ngFor="let message of messageData;let i=index;"
+            [ngClass]="{'last':i+1==messageData.length}">
+            <div class="icon_thumb">
+                <div class="icon">
+                    <div class="thumbnail" *ngIf="message.image.length == 0"
+                        style="background: url(assets/images/avatar.png);">
+
+                    </div>
+                    <div class="thumbnail" *ngIf="message.image.length!=0" style="background: url({{message.image}});">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">{{message.message}}
+                <div class="time">5 hours ago</div>
+            </div>
+
+        </div>
+        <div *ngIf="noRecordFound">
+            <p class="norecord">No New Message</p>
+        </div>
+    </div>
+</div>

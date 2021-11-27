@@ -1,0 +1,42 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block" *ngIf="!isPlanSelected">
+    <div class="container">
+        <div class="plan_wrap" *ngIf="plannerData">
+            <div class="plann_box" *ngFor="let plan of plannerData.plans">
+                <div class="planner_img" style="background: url({{plan.image}});">
+                </div>
+                <div class="plan_box">
+                    <div class="title">{{plan.title}}</div>
+                    <div class="price_box">
+                        <div class="price" *ngIf="plan.salePrice>0">{{plan.salePrice | currency}}</div>
+                        <div class="price" [ngClass]="{'price_cut': plan.salePrice>0}" *ngIf="plan.isCustom!=1">
+                            {{plan.regularPrice| currency}} </div>
+                    </div>
+                    <div class="description" [innerHtml]="plan.description"></div>
+                    <a href="javascript:void(0)" class="btn btn-primary" (click)="selectPlan(plan)">Get Started</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="planner_accept_box" *ngIf="isPlanSelected">
+    <div class="container">
+        <div class="planner_accept_box_inner">
+            <div class="vendor_thumb">
+                <div class="thumbnail" style="background: url({{plannerData.profileImage}});"></div>
+                <h3>{{plannerData.profileName}}</h3>
+            </div>
+            <div class="accept_box">
+                <span>Description</span>
+                <div [innerHtml]="selectedPlan.description"></div>
+                <a href="javascript:void(0)" (click)="goToPayment()">Accept</a>
+            </div>
+        </div>
+        <div class="chat_messages" *ngIf="isChatShow">
+            <app-chat-box [groupId]="groupId">
+            </app-chat-box>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->

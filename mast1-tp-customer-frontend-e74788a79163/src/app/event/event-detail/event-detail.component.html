@@ -1,0 +1,247 @@
+<!-- <app-header></app-header> -->
+<section class="project_view">
+    <div class="container" *ngIf="eventData">
+        <div class="project_view_section">
+            <div class="project_view_inner">
+                <div class="project_view_box">
+                    <div class="box_left">
+                        <div class="thumbnail" style="background: url({{eventData.profileImage}});">
+                        </div>
+                    </div>
+                    <div class="box_right">
+                        <h3>{{eventData.eventName}}</h3>
+                        <ul>
+                            <li>
+                                <label>Customer Name</label>
+                                <p>{{eventData.name}} </p>
+                            </li>
+                            <li>
+                                <label>Number of guests</label>
+                                <p>{{eventData.guest}}</p>
+                            </li>
+                            <li>
+                                <label>Event address</label>
+                                <p> {{eventData.address}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project_view_control">
+                    <div class="send_control">
+                        <a href="/message" class="btn btn-primary">Send Message</a>
+                    </div>
+                    <div class="send_control">
+                        <a href="/eventsellers/{{eventData.id}}" class="btn btn-primary ">See Event Planners and
+                            Vendors</a>
+                    </div>
+                    <div class="upload_control">
+                        <a href="/event/{{eventData.id}}/vendor" class="btn btn-primary bt ">Vendor Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="invoice_section">
+    <div class="container">
+        <div class="invoice_inner">
+            <div class="invoice_box">
+                <div class="top_btn">
+                    <a href="javascript:void()" class="btn btn-primary" (click)="goToTransaction(eventData.id)">Download
+                        invoice</a>
+                </div>
+                <div class="invoice_detail" *ngIf="eventData">
+                    <ul>
+
+                        <li>
+                            <label>Project start date:</label>
+                            <span>{{eventData.projectStartDate| date:'longDate'}}</span>
+                        </li>
+                        <li>
+                            <label>Project Interaction Date:</label>
+                            <span>{{eventData.interactionDate|date:'longDate'}}</span>
+                        </li>
+                        <li>
+                            <label>Event Status :</label>
+                            <span>{{eventData.status}}</span>
+                        </li>
+                    </ul>
+                    <div class="form-group">
+                        <label>Project Description</label>
+                        <p class="description" [innerHtml]="eventData.description"></p>
+                    </div>
+                    <ul>
+                        <li class="border">
+                            <label>Price:</label>
+                            <span>{{eventData.amount|currency}}</span>
+                        </li>
+                        <li class="border">
+                            <label>VAT {{eventData.vat}}%:</label>
+                            <span>{{eventData.totalvatAmount|currency}}</span>
+                        </li>
+                        <li class="border">
+                            <label>Grand Total:</label>
+                            <span>{{eventData.totalAmount|currency}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div *ngIf="offerDetail.length>0" class="moodboard">
+    <h4>Offers</h4>
+</div>
+<section class="offers_section">
+    <div class="offers_section_box">
+        <div class="container">
+            <div class="offers_box_inner">
+                <div class="offers_box_content" *ngIf="offerDetail">
+                    <div class="offers_box" *ngFor="let offers of offerDetail">
+                        <div class="offer_thumbnails" style="background: url({{offers.profileImage}})">
+                        </div>
+                        <div class="offer_details_box">
+                            <div class="descr_left">
+                                <h3>{{offers.eventName}} </h3>
+                                <p *ngIf="!offers.isReadmore">{{offers.description | slice:0:35 }} </p>
+                                <p *ngIf="offers.isReadmore">{{offers.description }} </p>
+                                <a href="javascript:void(0)" class="btn btn-primary"
+                                    *ngIf="offers.description.length > 35"
+                                    (click)="offers.isReadmore=!offers.isReadmore">{{offers.isReadmore ? 'ReadLess' : 'ReadMore'}}</a>
+                            </div>
+                            <div class="offers_btn">
+                                <span *ngIf="offers.status==1" class="paid">Paid</span>
+                                <span>{{offers.amount|currency}} </span>
+                                <a href="javascript:void(0)" class="btn btn-primary" (click)="goToPayment(offers.id)"
+                                    [style.display]="offers.status==1 ? 'none':'block'">Accept</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blogs_page" *ngIf="eventData&&eventData.products.length>0">
+    <div class="container">
+        <div class="blog_inner">
+            <div class="blog_left">
+                <div class="blog_lists">
+                    <div class="blog_box" *ngFor="let product of eventData?.products;let i=index">
+                        <div class="blog_thumbnail" style="background:url({{product.image}});">
+                        </div>
+                        <div class="blog_content">
+                            <div class="inner_content">
+                                <span>Product Name: </span>
+                                <h4>{{product.name}} </h4>
+                            </div>
+                            <div class="inner_content">
+                                <span>Quantity:</span>
+                                <p>{{product.quantity}}</p>
+                            </div>
+                            <div class="contact_information">
+                                <div class="contact_inner">
+                                    <div class="contact_contant">
+                                        <!-- <div class="inner_content">
+                                            <span>Address: </span>
+                                            <p>{{product.street}}, {{product.country}}</p>
+                                        </div>
+                                        <div class="inner_content">
+                                            <span>Mobile Number: </span>
+                                            <p>{{product.phoneNumber}}</p>
+                                        </div> -->
+                                        <div class="inner_content">
+                                            <span>Total Amount: </span>
+                                            <p>${{product.salePrice>0 ? product.salePrice*product.quantity : product.regularPrice*product.quantity}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="milestone_payment" *ngIf="eventData != undefined && eventData.milestones.length > 0">
+    <div class="container">
+        <div class="milestone_payment_inner">
+            <div class="milestone_payment_box">
+                <h3>Milestone payment </h3>
+
+                <div class="milestone_steps" *ngIf="eventData">
+                    <ul>
+
+                        <li *ngFor="let item of eventData.milestones"
+                            [ngClass]="{'active': item.isCompleted=='1', 'approved':item.status>'1' }">
+                            <span class="status_check" *ngIf="item.status==1" (click)="changestatus(item)"
+                                [ngClass]="{'active': item.status==1}"></span>
+                            <h4>{{item.name}}</h4>
+                            <p [innerHtml]="item.description"></p>
+                            <p>{{item.amount|currency}}</p>
+                            <p>{{item.status==-1?'Payment Pending':item.status==1?'Completed':item.status==2?'Approved ':item.status==3?'Paid':'Ongoing'}}
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="moodboard" *ngIf="noRecord">
+    <h4>MoodBoards</h4>
+</div>
+<section class="moodboards_section" *ngIf="moodboardData">
+    <div class="container">
+        <div class="moodboard_preview">
+            <div class="preview_img" *ngFor="let moodboard of moodboardData"
+                style="background: url({{moodboard.previewImage}});" (click)="getMoodBoardAlbum(moodboard.id)">
+                <span>{{moodboard.name}}</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="selected_album_section" *ngIf="moodboardAlbum">
+    <div class="container">
+        <div class="moodboard_slider">
+            <owl-carousel-o [options]="customOptions" #owl>
+                <ng-container *ngFor="let selectedImage of moodboardAlbum.moodboardimage">
+                    <ng-template carouselSlide [dotContent]="getThumbnail(selectedImage.image)">
+                        <input type="checkbox" name="status" [(ngModel)]="selectedImage.imgStatus"
+                            (change)="changesStatus(selectedImage)" class="checkbox" />Status
+
+                        <img [src]="selectedImage.image" [alt]="">
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+            <div class="owl_nav" *ngIf=" moodboardAlbum.moodboardimage&& moodboardAlbum.moodboardimage.length!=0">
+                <a class="owl_nav_left" (click)="owl.prev()"><img src="/assets/images/arrow_left.png" alt="">
+                </a>
+                <a class="owl_nav_right" (click)="owl.next()"><img src="/assets/images/arrow_right.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="send_to_section">
+    <div class="vendor_send_box">
+        <div class="vendor_send_inner">
+            <div class="vendor_send_content">
+                <form [formGroup]="eventShareForm">
+                    <p>Share To</p>
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter email address" class="form-control"
+                            formControlName="email">
+
+                        <a href="javascript:void(0)" class="btn btn-primary" (click)="shareEvent()"
+                            [ngClass]="{'disabled': eventShareForm.invalid}">Send</a>
+                    </div>
+                    <span class="error"
+                        *ngIf="eventShareForm.controls['email'].touched && eventShareForm.controls['email'].hasError('email')">Enter
+                        a valid email</span>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

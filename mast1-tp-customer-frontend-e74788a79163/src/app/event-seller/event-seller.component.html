@@ -1,0 +1,41 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="inner-content">
+            <div class="main_content">
+                <div class="vendor_list" *ngIf="eventSeller">
+                    <div class="vendor_box" *ngFor="let item of eventSeller">
+                        <div class="vendor_thumb">
+                            <div class="thumbnail" style="background: url({{item.profileImage}});"></div>
+                            <div class="heart_icon" *ngIf="item.type=='Vendor'" (click)="markFavorite(item)"
+                                [ngClass]="{'active': item.favorite ==1}">
+
+                            </div>
+                            <div class="heart_icon" *ngIf="item.type=='Planner'" (click)="markFavorite(item)"
+                                [ngClass]="{'active': item.favorite ==1}">
+
+                            </div>
+
+                            <a href="javascript:void(0)" *ngIf="item.type=='Vendor'" (click)="goToDetail(item)"
+                                class="btn-link">View Vendor</a>
+                            <a href="javascript:void(0)" *ngIf="item.type=='Planner'" (click)="goToDetail(item)"
+                                class="btn-link">View Planner</a>
+                        </div>
+                        <div class="rating">
+                            <ul>
+                                <li [ngClass]="{'fill': rating.active,'blank' : !rating.active}"
+                                    *ngFor="let rating of item.reviewRating" class="fill"></li>
+                            </ul>
+                        </div>
+                        <div class="vendor-details">
+                            <h3>{{item.profileName}}</h3>
+                            <span class="location">{{item.location}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

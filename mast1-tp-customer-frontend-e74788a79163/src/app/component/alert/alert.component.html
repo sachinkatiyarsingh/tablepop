@@ -1,0 +1,10 @@
+<div class="alert-container" *ngIf="data">
+  <div class="alert" [ngClass]="{ 'alert-success': !data.error, 'alert-danger': data.error }">
+    <div class="alert_heading">{{data.message.title}} </div>
+    <div class="alert_close">
+      <a href="javascript:void(0)" (click)="close()"> <img src="/assets/images/close_white.png" alt=""
+          class="alert_close_img"></a>
+    </div>
+    <div *ngIf="data.message.detail" class="alert_detail">{{data.message.detail}}</div>
+  </div>
+</div>

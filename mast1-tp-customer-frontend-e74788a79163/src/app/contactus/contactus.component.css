@@ -1,0 +1,68 @@
+header.light {
+    background: #faefea;
+}
+
+.error {
+    color: red;
+}
+
+.contact_section {
+    background: #faefea;
+    padding: 120px 0px 60px;
+}
+
+.contact_section .contact_inner {
+    display: flex;
+}
+
+.contact_section .contact_inner .contact_left {
+    flex: 1;
+    padding-right: 100px;
+    box-sizing: border-box;
+    max-width: 50%;
+}
+
+.contact_section .contact_inner .contact_left h3 {
+    font-size: 42px;
+    padding-bottom: 30px;
+    font-weight: 500;
+}
+
+.contact_section .contact_inner .contact_left p {}
+
+.contact_section .contact_inner .contact_left p a {
+    color: #000;
+    font-weight: 600;
+}
+
+.contact_section .contact_inner .contact_left p strong {}
+
+.contact_section .contact_inner .contact_right {
+    flex: 1;
+}
+
+.contact_section .contact_inner .contact_right .contact_form {}
+
+.contact_section .contact_inner .contact_right .contact_form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact_section .contact_inner .contact_right .contact_form .form-group .form-control {
+    border: 1px solid #000;
+}
+
+.contact_section .contact_inner .contact_right .contact_form .form-group textarea.form-control {
+    height: 200px;
+    resize: none;
+}
+
+.contact_section .contact_inner .contact_right .contact_form .submit_btn {}
+
+.contact_section .contact_inner .contact_right .contact_form .submit_btn .btn {}
+
+.btn-default img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    margin-left: 10px;
+}

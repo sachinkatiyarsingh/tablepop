@@ -1,0 +1,59 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+
+<section class="content_block">
+    <div class="container">
+        <div class="plan_wrap">
+            <div class="plann_box" *ngFor="let product of products">
+                <div class="planner_img" style="background: url({{product.image}});"
+                    (click)="productImageShow(product)">
+                </div>
+                <div class="plan_box">
+                    <div class="title">{{product.name}}</div>
+                    <div class="price_box">
+                        <div class="price" *ngIf="product.salePrice>0">${{product.salePrice}}</div>
+                        <div class="price" [ngClass]="{'price_cut': product.salePrice>0}">
+                            ${{product.regularPrice}} </div>
+                    </div>
+                    <div class="description" [innerHtml]="product.description"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="offer_section" *ngIf="productImages&&product?.images.length!=0">
+    <div class="container" *ngIf="product?.images.length!=0">
+        <div class="offer_modal product_slider_modal">
+            <div class="offer_modal_inner">
+                <div class="offer_modal_content">
+                    <div class="close_modal">
+                        <a href="javascript:void(0);" class="close" (click)="productImages=!productImages">
+                            <img src="assets/images/close.png" alt="" />
+                        </a>
+                    </div>
+                    <div class="main_content" *ngIf="product?.images.length!=1">
+                        <div class="product_modal_inner">
+                            <owl-carousel-o [options]="customOptions" #owlCar>
+                                <ng-template carouselSlide *ngFor="let item of product?.images">
+                                    <div class="item">
+                                        <img [src]="item.image" alt="" class="banner_right"
+                                            *ngIf="item.image.length!=1">
+                                    </div>
+                                </ng-template>
+                            </owl-carousel-o>
+                            <div class="owl_nav">
+                                <a class="owl_nav_left" (click)="owlCar.prev()"><img src="/assets/images/arrow_left.png"
+                                        alt="">
+                                </a>
+                                <a class="owl_nav_right" (click)="owlCar.next()"><img
+                                        src="/assets/images/arrow_right.png" alt=""></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->

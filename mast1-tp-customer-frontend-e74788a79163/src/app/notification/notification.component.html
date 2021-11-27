@@ -1,0 +1,29 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="notification">
+    <div class="container">
+        <div class="dashboard_inner">
+            <div class="notification_block">
+                <div class="notification_head">
+                    <h2>New notifications </h2>
+                </div>
+                <div class="notification_wrap" *ngFor="let item of listData;let i=index">
+                    <div class="notification_box">
+                        <div class="thumbnail" style="background: url(/assets/images/mask.png);">
+                        </div>
+                        <div class="notification_details">
+                            <h3>New request</h3>
+                            <p>{{item.notification}}</p>
+                        </div>
+                        <div class="notification_control">
+                            <a href="javascript:void(0)" (click)="goToPage(item)">reply request</a>
+                            <div class="trash_icon" (click)="deleteNotification(item,i)">
+                                <img src="/assets/images/delete.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->

@@ -1,0 +1,365 @@
+<header class="{{headerClass}}" id="header">
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/images/logo.svg" alt="" />
+                </a>
+            </div>
+            <div class="mobile_nav" (click)="isMobile=!isMobile">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menus" [ngClass]="{'active':isMobile}">
+                <div class="navs">
+                    <ul>
+                        <li *ngIf="isUserLogin" class="li"><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="/findaplanner">Plan an event</a></li>
+                        <li *ngIf="!isUserLogin"><a href="/howsitworks">How it works</a></li>
+                        <li *ngIf="!isUserLogin"><a href="/ourstory">Our Story</a></li>
+                        <li *ngIf="!isUserLogin"><a href="/blog">Blog</a></li>
+                        <li *ngIf="isUserLogin" class="li"><a href="/events">Events</a></li>
+                        <li *ngIf="isUserLogin" class="li"><a href="/transactions">Transactions</a></li>
+                        <li *ngIf="isUserLogin" class="li"><a href="/favoritesellers">Favorite Partner</a></li>
+                    </ul>
+                </div>
+
+                <div class="right_nav">
+                    <ul>
+                        <li><a href="/myprofile" *ngIf="isUserLogin">
+                                <div class="icon user"></div>
+                            </a>
+                        </li>
+
+                        <li (click)="showNotification()" *ngIf="notificationCount"><a href="javascript:void(0)"
+                                *ngIf="isUserLogin">
+                                <div class="icon notification"><span *ngIf="notificationCount.notification">
+                                        {{notificationCount.notification}} </span></div>
+                            </a>
+                            <notification *ngIf="notification"></notification>
+                        </li>
+                        <li (click)="showMessage()" *ngIf="notificationCount"><a href="javascript:void(0)"
+                                *ngIf="isUserLogin">
+                                <div class="icon message"><span
+                                        *ngIf="notificationCount.message">{{notificationCount.message}} </span></div>
+                            </a>
+                            <messagenotification *ngIf="message"></messagenotification>
+                        </li>
+                        <li *ngIf="isUserLogin"><a href="javascript:void(0);" class="singup"
+                                (click)="logout()">Logout</a></li>
+                        <li *ngIf="!isUserLogin"><a href="javascript:void(0);" class="login" (click)="showSignup()">Sign
+                                Up </a></li>
+                        <li *ngIf="!isUserLogin"><a href="javascript:void(0);" class="login" (click)="showLogin()">Log
+                                in
+                            </a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<div class="modal full login-modal continue" *ngIf="isLoginShowCont">
+    <div class="modal_inner inner ">
+        <div class="modal_header login_header" (click)="closeLoginCont()">
+            <a href="javascript:void(0);" class="close">
+                <img src="/assets/images/close.png" alt="" />
+            </a>
+        </div>
+        <div class="login_modal main">
+            <div class="login_left heading_cont">
+                <h3>Plan any event on any budget</h3>
+                <div class="already_member">
+                    <div class="already_member_inner">
+                        <span>Already a member?</span>
+                        <h4 (click)="showLogin()">Log In</h4>
+                    </div>
+                    <div class="already_member_inner">
+                        <span>Not a member yet? </span>
+                        <h4 (click)="isSignupShow =!isSignupShow">Sign up</h4>
+                    </div>
+                </div>
+                <div class="social_login">
+                    <div class="social_login_google">
+                        <a href="javascript:void(0);" (click)="signInWithGoogle()" class="btn btn-primary">
+                            <img src="/assets/images/googleplus.png" alt="">
+                            Login
+                            With Google</a>
+                    </div>
+                    <div class="social_login_fb">
+                        <a href="javascript:void(0);" (click)="signInWithFB()" class="btn btn-primary"> <img
+                                src="/assets/images/facebook.png" alt="">Login
+
+                            With
+                            Facebook</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login_right right">
+                <img src="/assets/images/Component2.png" alt="" />
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal full login-modal" *ngIf="isLoginShow">
+    <div class="modal_inner">
+        <div class="modal_header" (click)="closeLogin()">
+            <a href="javascript:void(0);" class="close">
+                <img src="/assets/images/close.png" alt="" />
+            </a>
+        </div>
+        <div class="login_modal">
+            <div class="login_left">
+                <img src="/assets/images/login.png" alt="" />
+            </div>
+            <div class="login_right">
+                <h2>Welcome back!</h2>
+                <p>Log in to your TablePop account</p>
+                <div class="">
+                    <form [formGroup]="loginForm" class="login_form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="email" placeholder="EMAIL" />
+                            <span class="error"
+                                *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('required')">Email
+                                is required.</span>
+                            <span class="error"
+                                *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].hasError('email')">Enter
+                                a valid email</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="PASSWORD" (keyup.enter)="si.click()" />
+                            <span class="error"
+                                *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].hasError('required')">Password
+                                is required</span>
+                        </div>
+                        <div class="forgot_link">
+                            <a href="javascript:void(0);" (click)="showForgot()">Forgot your password?</a>
+                        </div>
+                        <div class="login_btn">
+                            <a href="javascript:void(0)" #si (click)="login()"
+                                [ngClass]="{'disabled':loginForm.invalid}" class="btn btn-primary">Log in</a>
+                        </div>
+                        <div class="social_login">
+                            <div class="social_login_google">
+                                <a href="javascript:void(0);" (click)="signInWithGoogle()" class="btn btn-primary">
+                                    <img src="/assets/images/googleplus.png" alt="">
+                                    Login
+                                    With Google</a>
+                            </div>
+                            <div class="social_login_fb">
+                                <a href="javascript:void(0);" (click)="signInWithFB()" class="btn btn-primary"> <img
+                                        src="/assets/images/facebook.png" alt="">Log in
+
+                                    With
+                                    Facebook</a>
+                            </div>
+                        </div>
+                        <p>Don’t have an account? <a href="javascript:void(0);" (click)="showSignup()">Sign Up</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal full login-modal" *ngIf="isForgotShow">
+    <div class="modal_inner">
+        <div class="modal_header" (click)="closeForgot()">
+            <a href="javascript:void(0);" class="close">
+                <img src="/assets/images/close.png" alt="" />
+            </a>
+        </div>
+        <div class="login_modal">
+            <div class="login_left">
+                <img src="/assets/images/login.png" alt="" />
+            </div>
+            <div class="login_right">
+                <h2>Forgot Password </h2>
+                <div class="login_form">
+                    <div class="form-group">
+                        <form [formGroup]="forgotForm">
+                            <input type="email" class="form-control" placeholder="EMAIL" formControlName="email"
+                                (keyup.enter)="bf.click()" />
+                            <span class="error"
+                                *ngIf="forgotForm.controls['email'].touched && forgotForm.controls['email'].hasError('required')">Email
+                                is required.</span>
+                        </form>
+                    </div>
+                    <div class="login_btn">
+                        <a href="javascript:void(0)" class="btn btn-primary" #bf
+                            [ngClass]="{'disabled':forgotForm.invalid}" (click)="submit()">Send</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="signupmodal full login-modal" *ngIf="isSignupShow">
+    <div class="inner_modal">
+        <div class="header_modal" (click)="closeSign()">
+            <a href="javascript:void(0);" class="close">
+                <img src="/assets/images/close.png" alt="" />
+            </a>
+        </div>
+        <div class="signup_modal">
+            <div class="signup_right">
+                <h3>Sign Up</h3>
+                <p>Your event journey starts here</p>
+                <div class="signup_form">
+                    <form [formGroup]="signUpForm" class="signup_form">
+                        <div class="form-group col-2">
+                            <input type="text" class="form-control" formControlName="name" placeholder="Name" />
+                            <span class="error"
+                                *ngIf="signUpForm.controls['name'].touched && signUpForm.controls['name'].hasError('required')">Name
+                                is required.</span>
+                        </div>
+                        <div class="form-group col-2">
+                            <input type="text" class="form-control" formControlName="surname" placeholder="Surname" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" formControlName="email" placeholder="Email address"
+                                (keyup.enter)="su.click()" />
+                            <span class="error"
+                                *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].hasError('required')">Email
+                                is required.</span>
+                            <span class="error"
+                                *ngIf="signUpForm.controls['email'].touched && signUpForm.controls['email'].hasError('email')">Enter
+                                a valid email</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="mobile" placeholder="Mobile Number"
+                                ng2TelInput [ng2TelInputOptions]="{initialCountry: 'us'}" (keyup.enter)="su.click()"
+                                (ng2TelOutput)="getNumber($event)" (countryChange)="onCountryChange($event)"
+                                (hasError)="onError($event)" />
+                            <!-- <span class="error"
+                                *ngIf="signUpForm.controls['mobile'].touched && signUpForm.controls['mobile'].hasError('required')">Mobile
+                                is required.</span> -->
+                            <!-- <span class="error"
+                                *ngIf="signUpForm.controls['mobile'].touched && signUpForm.controls['mobile'].hasError('pattern')">Enter
+                                a valid number</span> -->
+                            <div [ngSwitch]="signUpForm.controls['mobile'].dirty">
+                                <div *ngSwitchCase="signUpForm.controls['mobile'].value==''"></div>
+                                <div *ngSwitchDefault> <span class="error"
+                                        *ngIf="signUpForm.controls['mobile'].dirty&&!mobileValid">Please
+                                        Enter Valid Mobile Number</span></div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="Password" />
+                            <span class="error"
+                                *ngIf="signUpForm.controls['password'].touched && signUpForm.controls['password'].hasError('required')">Password
+                                is required.</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" formControlName="confirmPassword"
+                                placeholder="Confirm Password" (keyup.enter)="su.click()" />
+                            <span class="error" *ngIf="signUpForm.controls['confirmPassword'].touched && signUpForm.controls['confirmPassword'].errors && 
+                                signUpForm.controls['confirmPassword'].errors.ConfirmPassword">Passsword and
+                                ConfirmPassword didn't match.</span>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" formControlName="country" placeholder="Select Country"
+                                (change)="changeCountry($event)">
+                                <option value="">Select Country</option>
+                                <option *ngFor="let c of countryData" [value]="c.id">{{c.name}}</option>
+                            </select>
+                            <span class="error"
+                                *ngIf="signUpForm.controls['country'].touched && signUpForm.controls['country'].hasError('required')">Country
+                                is required.</span>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" formControlName="state">
+                                <option value="">Select State</option>
+                                <option *ngFor="let s of stateData" [value]="s.id">{{s.name}}</option>
+                            </select>
+                            <span class="error"
+                                *ngIf="signUpForm.controls['state'].touched && signUpForm.controls['state'].hasError('required')">State
+                                is required.</span>
+                        </div>
+                        <div class="remember_box">
+                            <input type="checkbox" id="remember" name="remember" value="remember"
+                                formControlName="checked">
+                            <label for="remember"> By creating an account you agree to the <a
+                                    href="/assets/images/terms.pdf" target="_blank">terms of use</a>
+                                and our <a href="/assets/images/privacy.pdf" target="_blank">privacy
+                                    policy</a></label><br>
+                        </div>
+                        <div class="login_btn">
+                            <a href="javascript:void(0)" #su (click)="signup()"
+                                [ngClass]="{'disabled':signUpForm.invalid}" class="btn btn-primary"> Create Account </a>
+                        </div>
+                        <p>Already have an account ? <a href="javascript:void(0);" (click)="showLogin()">Sign
+                                In</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            <div class="signup_left">
+                <img src="/assets/images/signup_component.png" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal full login-modal" *ngIf="subscription">
+    <div class="modal_inner">
+        <div class="modal_header" (click)="closesub()">
+            <a href="javascript:void(0);" class="close">
+                <img src="/assets/images/close.png" alt="" />
+            </a>
+        </div>
+        <div class="login_modal">
+            <div class="login_left">
+                <img src="/assets/images/login.png" alt="" />
+            </div>
+            <div class="login_right">
+                <h2>Subscribe</h2>
+                <p></p>
+                <div class="">
+                    <form [formGroup]="subscriptionForm" class="login_form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="firstname"
+                                placeholder="First name" />
+                            <span class="error"
+                                *ngIf="subscriptionForm.controls['firstname'].touched && subscriptionForm.controls['firstname'].hasError('required')">First
+                                Name
+                                is required.</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="lastname"
+                                placeholder="Last name" />
+                            <span class="error"
+                                *ngIf="subscriptionForm.controls['lastname'].touched && subscriptionForm.controls['lastname'].hasError('required')">Last
+                                Name
+                                is required.</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="email" placeholder="EMAIL" />
+                            <span class="error"
+                                *ngIf="subscriptionForm.controls['email'].touched && subscriptionForm.controls['email'].hasError('required')">Email
+                                is required.</span>
+                            <span class="error"
+                                *ngIf="subscriptionForm.controls['email'].touched && subscriptionForm.controls['email'].hasError('email')">Enter
+                                a valid email</span>
+                        </div>
+
+                        <div class="login_btn">
+                            <a href="javascript:void(0)" #si (click)="submitSubForm()"
+                                [ngClass]="{'disabled':subscriptionForm.invalid}" class="btn btn-primary">Submit</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

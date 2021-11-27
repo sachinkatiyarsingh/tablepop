@@ -1,0 +1,30 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="inner-content">
+            <div class="main_content">
+                <div class="vendor_list">
+                    <div class="vendor_box" *ngFor="let item of plannerList">
+                        <div class="vendor_thumb">
+                            <div class="thumbnail" style="background: url({{item.profileImage}});"></div>
+                            <a href="javascript:void(0)" (click)="goToDetail(item)" class="btn-link">View Planner</a>
+                        </div>
+                        <div class="vendor-details">
+                            <h3>{{item.profileName}}</h3>
+                            <span class="expertise">{{item.experiencePlanning}}</span>
+                            <span class="location">{{item.location}}</span>
+                        </div>
+                        <div class="rating">
+                            <ul>
+                                <li [ngClass]="{'fill': rating.active,'blank' : !rating.active}"
+                                    *ngFor="let rating of item.reviewRating" class="fill"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->

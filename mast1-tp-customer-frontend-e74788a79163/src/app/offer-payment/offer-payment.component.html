@@ -1,0 +1,194 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+
+<form novalidate [formGroup]="stripeForm" *ngIf="isInit">
+    <section class="address_section" *ngIf="userAddress.length>0">
+        <div class="container">
+            <div class="address-details">
+                <h2>Select Address:</h2>
+                <div class="address_inner">
+                    <div class="address_content">
+                        <ul>
+                            <li *ngFor="let item of userAddress">
+                                <input type="radio" [value]="item.id" formControlName="addressId"
+                                    (change)="onChangeAddress($event)">
+                                <p>{{item.street}},{{item.countryName}},{{item.phoneNumber}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="payment_detail_section">
+        <div class="container" *ngIf="paymentDetail">
+            <div class="payment_detail">
+                <div class="payment_inner">
+                    <ul>
+                        <li>
+                            <span>Price:</span>
+                            <p> ${{paymentDetail.price}}</p>
+                        </li>
+                        <li>
+                            <span>Vat {{paymentDetail.vat}}:</span>
+                            <p> ${{paymentDetail.vatAmount}} </p>
+                        </li>
+                        <li>
+                            <span>Total Amount:</span>
+                            <p> ${{paymentDetail.grandtotal}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="cart_section" *ngIf="paymentDetail?.cartData.length!=0">
+        <div class="container">
+            <div class="cart_section_box">
+                <div class="cart_section_inner">
+                    <div class="cart_section_heading">
+                        <div class="cart_heading">
+                            <h5 class="product_detail">Product Details</h5>
+                            <h5 class="product_name">Event Name</h5>
+                            <h5 class="product_price">Price</h5>
+                            <h5 class="product_quantity">Quantity</h5>
+                            <h5 class="product_subtotal">SubTotal</h5>
+                        </div>
+
+                        <div class="cart_heading" *ngFor="let cart of paymentDetail?.cartData;let i=index">
+                            <div class="product_detail">
+                                <!-- <div class="close_img">
+                                    <img src="assets/images/close.png" alt="">
+                                </div> -->
+                                <div class="product_details_column">
+                                    <div class="prodct_image">
+                                        <img [src]="cart.image" alt="">
+                                        <img *ngIf="cart.image==''" src="assets/images/no_image.png" alt="">
+                                    </div>
+
+                                    <p>{{cart.name}}</p>
+
+                                </div>
+                            </div>
+                            <div class="product_name">
+                                <p>{{cart.eventName}}</p>
+                            </div>
+                            <div class="product_price">
+                                <p>${{cart.salePrice > 0 ? cart.salePrice : cart.regularPrice}}</p>
+                            </div>
+                            <div class="product_quantity">
+                                <div class="quanity_box">
+                                    <!-- <div class="minus">
+                                        <img src="assets/images/minus.png" alt="">
+                                    </div> -->
+                                    <p>{{cart.quantity}}</p>
+                                    <!-- <div class="plus">
+                                        <img src="assets/images/plus.png" alt="">
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="product_subtotal">
+                                <p>${{cart.salePrice>0 ? cart.salePrice*cart.quantity : cart.regularPrice*cart.quantity}}
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="text-right" style="margin-top: 30px; text-align: right;">
+                <a href="javascript:void(0)" class="btn btn-primary" (click)="bookNow()"> Book Now </a>
+            </div> -->
+        </div>
+    </section>
+    <section class="payment_login_Details" *ngIf="!stripeForm.controls['addressId'].value">
+        <div class="container">
+            <div class="login-details">
+                <h2>Personal details</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Street" formControlName="street" />
+                    <span class="error"
+                        *ngIf="stripeForm.controls['street'].touched && stripeForm.controls['street'].hasError('required')">Street
+                        is required.</span>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" formControlName="country" placeholder="Select Country">
+                        <option value="">Select Country</option>
+                        <option *ngFor="let c of countryData" [value]="c.id">{{c.name}}</option>
+                    </select>
+                    <span class="error"
+                        *ngIf="stripeForm.controls['country'].touched && stripeForm.controls['country'].hasError('required')">Country
+                        is required.</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Mobile Number"
+                        ng2TelInput [ng2TelInputOptions]="{initialCountry: 'us'}" (ng2TelOutput)="getNumber($event)"
+                        (countryChange)="onCountryChange($event)" (hasError)="onError($event)" />
+                    <span class="error"
+                        *ngIf="stripeForm.controls['phoneNumber'].touched && stripeForm.controls['phoneNumber'].hasError('required')">Mobile
+                        is required.</span>
+                    <span class="error"
+                        *ngIf="stripeForm.controls['phoneNumber'].touched && stripeForm.controls['phoneNumber'].hasError('pattern') && !mobileValid">Please
+                        Enter Valid Mobile Number</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="payout_details">
+        <div class="container">
+            <div class="payout_inner_content">
+                <div class="payout_inner_left">
+                    <div class="payout_inner">
+                        <h2>Payment details</h2>
+                        <div class="payment_method_box">
+                            <!-- <ul>
+                        <li class="active"><a href="#">Credit card</a></li>
+                        <li><a href="#">PayPal (You will be directed to the PayPal website.)</a></li>
+                    </ul> -->
+                            <div class="payment_form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" formControlName="name"
+                                        placeholder="Card holder Name" />
+                                    <span class="error"
+                                        *ngIf="stripeForm.controls['name'].touched && stripeForm.controls['name'].hasError('required')">Name
+                                        is required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <div id="card-number" class="form-control"></div>
+
+                                </div>
+                                <div class="form-group cols">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div id="card-expiry" class="form-control"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div id="card-cvc" class="form-control"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="btn-box">
+                                    <button type="button" (click)="makePayment();pressed=true;" [disabled]="pressed"
+                                        class="btn btn-primary" style="cursor: pointer;"
+                                        [ngClass]="{'disabled': stripeForm.invalid}">Make Payment </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payout_inner_right">
+                    <div class="total_amount">
+                        <p>You are paying Total {{paymentDetail?.grandtotal|currency}} </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</form>
+<!-- <app-footer></app-footer> -->

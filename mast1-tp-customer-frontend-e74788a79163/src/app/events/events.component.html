@@ -1,0 +1,51 @@
+<section class="content_block">
+    <div class="heading">
+        <div class="container">
+            <h4>Events</h4>
+        </div>
+    </div>
+    <div class="container">
+        <div class="event_list">
+            <div class="customer_table">
+                <div class="tab">
+                    <span [ngClass]="{'active':type==''}" (click)="getEvent('all')">All</span>
+                    <span [ngClass]="{'active':type=='pending'}" (click)="getEvent('pending')">New</span>
+                    <span [ngClass]="{'active':type=='2'}" (click)="getEvent('2')">Ongoing</span>
+                    <span [ngClass]="{'active':type=='1'}" (click)="getEvent('1')">Finished</span>
+                </div>
+                <div class="customer_table_list">
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <td class="bold">Event ID</td>
+                                <td class="bold">Event Name </td>
+                                <td class="bold">Location</td>
+                                <td class="bold">Date </td>
+                                <td class="bold">Mobile no. </td>
+                                <td class="bold">Action </td>
+                            </tr>
+                            <tr [hidden]="noRecordFound" *ngFor="let list of questionnaireList; let i = index">
+                                <td> <a href="/event/{{list.id}}">{{list.tokenId}}</a> </td>
+                                <td>{{list.eventName}}</td>
+                                <td> {{list.confirmationPartyPlanner}} </td>
+                                <td> {{list.created_at|date:'MMM d, y'}} </td>
+                                <td> {{list.mobile}} </td>
+                                <td><a href="/servicebudget/{{list.id}}" *ngIf="list.status!=1">Retake</a>
+                                    <a style="margin-left:10px;" href="/planner/{{list.id}}"
+                                        *ngIf="list.status==0">Planners</a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="noRecordFound">
+                                <td colspan="7" class="norecord">
+                                    No record found..
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <app-paginator [pageSize]="pageOpts.PageSize" [totalCount]="length"
+                        [pageNumber]="pageOpts.PageNumber" (onPageSelect)="PageSelect($event)"></app-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

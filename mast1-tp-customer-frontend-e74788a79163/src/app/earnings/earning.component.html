@@ -1,0 +1,34 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="customer_table">
+            <div class="customer_table_list">
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <td class="bold">SR No.</td>
+                            <td class="bold">Event Name</td>
+                            <td class="plan_price bold">Amount</td>
+                            <td class="plan_btn bold">Action</td>
+                        </tr>
+                        <tr [hidden]="noRecordFound" *ngFor="let transaction of transactionList ;let i=index ">
+                            <td>{{i+1}} </td>
+                            <td>{{transaction.eventName}} </td>
+                            <td class="plan_price">{{transaction.totalAmount| currency}}</td>
+                            <td class="plan_btn"><a href="javascript:void(0)"
+                                    (click)="goToDetail(transaction.id)">View</a>
+                            </td>
+                        </tr>
+                        <tr *ngIf="noRecordFound">
+                            <td colspan="7" class="norecord">
+                                No record found..
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <app-paginator [pageSize]="pageOpts.PageSize" [totalCount]="totalPage"
+                    [pageNumber]="pageOpts.PageNumber" (onPageSelect)="PageSelect($event)"></app-paginator>
+            </div>
+        </div>
+    </div>
+</section>

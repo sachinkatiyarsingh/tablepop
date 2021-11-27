@@ -1,0 +1,32 @@
+<div class="message_list" #msgList infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50"
+    (scrolledUp)="getMoreChats()" [scrollWindow]="false">
+    <ng-container *ngFor="let data of messageList">
+        <app-message-box [data]="data" [imageUrl]="imageUrl"></app-message-box>
+    </ng-container>
+</div>
+<div class="message">
+    <div class="file-box" *ngIf="msgFile.length>0">
+        <div class="file" *ngFor="let ff of msgFile;let i=index">
+            <img src="{{ff.img}}" alt="" *ngIf="ff.type.indexOf('image')>-1">
+            <p *ngIf="ff.type.indexOf('image')==-1"><img src="assets/images/file.png" alt="">
+                <!-- <p>{{ff.file.name}}</p> -->
+                <span>{{ff.file.name}}</span>
+            </p>
+            <a href="javascript:void(0)" (click)="remove(i)" class="close">
+                <img src="assets/images/delete.png" alt="">
+            </a>
+        </div>
+    </div>
+    <textarea placeholder="999 characters left" [(ngModel)]="message" (keyup.enter)="ci.click()"></textarea>
+    <div class="send_btn">
+        <input type="file" #af multiple="true" max="5" (change)="fileChangeListener(af.files,af)"
+            style="display: none;">
+        <a href="javascript:void(0)" (click)="af.click()">
+            <img src="assets/images/attach.png" alt="" class="icon">
+            Attach file</a>
+        <a href="javascript:void(0)" [ngClass]="{'disabled':message.trim().length==0&&msgFile.length==0}" #ci
+            (click)="sendMessage()" class="">
+            Send
+        </a>
+    </div>
+</div>

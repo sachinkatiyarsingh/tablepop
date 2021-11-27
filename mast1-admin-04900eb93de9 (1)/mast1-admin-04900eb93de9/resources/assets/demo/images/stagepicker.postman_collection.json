@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "c390deb2-947b-4857-8286-cb3a78df171f",
+		"name": "stagepicker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "sachin",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "kumawat",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "sachin.hos7@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phoneNo",
+							"value": "7791087721",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/register",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "8939097983",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/login",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/profile-update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjFhZDZjOGI2ZTJmNWM1NTI1OWQ0ZDFmYzdiODQxOTg0ZWFmZmFjNjJiNjc4MmNiZTY5ZTYyMTIyMjM2OGYxMWEzZDRkMjNlZTJjOTA0NzIiLCJpYXQiOjE1ODk1NDA3MTYsIm5iZiI6MTU4OTU0MDcxNiwiZXhwIjoxNjIxMDc2NzE2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.qY10hFAtCzbfx9pWeNReLOHcuMqKDQxPwELx3AkVbXM1MlEqsMys-tK3VcxyotLcTTf7EgilIkQVoPXqM6jqLKaS8LzKvq8c6RcVp5PqA1roB5mApy49FWrLIxdEs03Jghyow5f1o6gT8mr4OfhtuaXVA4JCoopIqYZsoSMWDg6wT5wdEySCwQ3ZXBQpb_hKT3Ujo2u2hhvF_6da4QjYfISU8nL20y9a3_EVZzCfNUtqWJepmGfOnOZeefION87cPW-QX2Im2DaUIttUuAmBb3UsjjJndd9eDu94HsKY4KwAhIgNqOjL2xKvI6BiTnq0CUFOKJq-M2oQuuUEBqRKOM4l52_kUlboxDIQWH0gltLjGwGRYFOrxrRYl_iqflb-sQ_-34ZnzANUqLSQypsOuZYrthh13OddpOiWZVOdLkJCBc0KH93OD2B4tF5-fjRzOtv4t2sfm42wrh2uTpJcC6tsenW8i0bEtK30zMjaWmXbW391HXKXFzslQiliG6uEpg4L-GzyqNV0atY9wi_je8K7CI7hrZPtyYGChX4uVPZY10ZoXEmzlKWocDKpy-9iJ6ygHYzHhjOZCpYiXZCv7pzRn3bJ8axNKd0re06taYxkq9abjrC-9aM_aDLL5OX2UmvAsNNG3calpfynR5kfbKuL76yUsDkxwVX0W8cS52E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "ssadddd",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "asdas",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/xampp/htdocs/tabletop/resources/assets/demo/images/download.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/profile-update",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"profile-update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/change-password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjFhZDZjOGI2ZTJmNWM1NTI1OWQ0ZDFmYzdiODQxOTg0ZWFmZmFjNjJiNjc4MmNiZTY5ZTYyMTIyMjM2OGYxMWEzZDRkMjNlZTJjOTA0NzIiLCJpYXQiOjE1ODk1NDA3MTYsIm5iZiI6MTU4OTU0MDcxNiwiZXhwIjoxNjIxMDc2NzE2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.qY10hFAtCzbfx9pWeNReLOHcuMqKDQxPwELx3AkVbXM1MlEqsMys-tK3VcxyotLcTTf7EgilIkQVoPXqM6jqLKaS8LzKvq8c6RcVp5PqA1roB5mApy49FWrLIxdEs03Jghyow5f1o6gT8mr4OfhtuaXVA4JCoopIqYZsoSMWDg6wT5wdEySCwQ3ZXBQpb_hKT3Ujo2u2hhvF_6da4QjYfISU8nL20y9a3_EVZzCfNUtqWJepmGfOnOZeefION87cPW-QX2Im2DaUIttUuAmBb3UsjjJndd9eDu94HsKY4KwAhIgNqOjL2xKvI6BiTnq0CUFOKJq-M2oQuuUEBqRKOM4l52_kUlboxDIQWH0gltLjGwGRYFOrxrRYl_iqflb-sQ_-34ZnzANUqLSQypsOuZYrthh13OddpOiWZVOdLkJCBc0KH93OD2B4tF5-fjRzOtv4t2sfm42wrh2uTpJcC6tsenW8i0bEtK30zMjaWmXbW391HXKXFzslQiliG6uEpg4L-GzyqNV0atY9wi_je8K7CI7hrZPtyYGChX4uVPZY10ZoXEmzlKWocDKpy-9iJ6ygHYzHhjOZCpYiXZCv7pzRn3bJ8axNKd0re06taYxkq9abjrC-9aM_aDLL5OX2UmvAsNNG3calpfynR5kfbKuL76yUsDkxwVX0W8cS52E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "currentPassword",
+							"value": "123456",
+							"type": "text"
+						},
+						{
+							"key": "newPassword",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "confirmPassword",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/change-password",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"change-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/forget",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "sachin.hos7@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/forget",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"forget"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audition-add",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjFhZDZjOGI2ZTJmNWM1NTI1OWQ0ZDFmYzdiODQxOTg0ZWFmZmFjNjJiNjc4MmNiZTY5ZTYyMTIyMjM2OGYxMWEzZDRkMjNlZTJjOTA0NzIiLCJpYXQiOjE1ODk1NDA3MTYsIm5iZiI6MTU4OTU0MDcxNiwiZXhwIjoxNjIxMDc2NzE2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.qY10hFAtCzbfx9pWeNReLOHcuMqKDQxPwELx3AkVbXM1MlEqsMys-tK3VcxyotLcTTf7EgilIkQVoPXqM6jqLKaS8LzKvq8c6RcVp5PqA1roB5mApy49FWrLIxdEs03Jghyow5f1o6gT8mr4OfhtuaXVA4JCoopIqYZsoSMWDg6wT5wdEySCwQ3ZXBQpb_hKT3Ujo2u2hhvF_6da4QjYfISU8nL20y9a3_EVZzCfNUtqWJepmGfOnOZeefION87cPW-QX2Im2DaUIttUuAmBb3UsjjJndd9eDu94HsKY4KwAhIgNqOjL2xKvI6BiTnq0CUFOKJq-M2oQuuUEBqRKOM4l52_kUlboxDIQWH0gltLjGwGRYFOrxrRYl_iqflb-sQ_-34ZnzANUqLSQypsOuZYrthh13OddpOiWZVOdLkJCBc0KH93OD2B4tF5-fjRzOtv4t2sfm42wrh2uTpJcC6tsenW8i0bEtK30zMjaWmXbW391HXKXFzslQiliG6uEpg4L-GzyqNV0atY9wi_je8K7CI7hrZPtyYGChX4uVPZY10ZoXEmzlKWocDKpy-9iJ6ygHYzHhjOZCpYiXZCv7pzRn3bJ8axNKd0re06taYxkq9abjrC-9aM_aDLL5OX2UmvAsNNG3calpfynR5kfbKuL76yUsDkxwVX0W8cS52E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "sdfsd",
+							"type": "text"
+						},
+						{
+							"key": "tagline",
+							"value": "sdf",
+							"type": "text"
+						},
+						{
+							"key": "startDate",
+							"value": "2019-12-03",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "2019-12-03",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "sdds",
+							"type": "text"
+						},
+						{
+							"key": "roles",
+							"value": "sdf",
+							"type": "text"
+						},
+						{
+							"key": "participationNumber",
+							"value": "sdf",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "sdsdf",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "sdfsdf",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "sdfs",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/xampp/htdocs/tabletop/resources/assets/demo/images/Mask_Group - Copy.png"
+						},
+						{
+							"key": "latitude",
+							"value": "sdf",
+							"type": "text"
+						},
+						{
+							"key": "longitude",
+							"value": "f",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audition-add",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audition-add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audition-delete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "audiotionId",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audition-delete",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audition-delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audition-details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "audiotionId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audition-details",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audition-details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audition-list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZGY1NjAzYjFlMmEwMjQwOGU3YWMxZmEzYzJiMjA1MmFjMGIwYzQ2ZjRjY2JmNzZjNjA3YjMwN2Q1OTNiOWIxODg5Y2RlNmU4NmQxNTNhOTciLCJpYXQiOjE1ODk1NDkwMDUsIm5iZiI6MTU4OTU0OTAwNSwiZXhwIjoxNjIxMDg1MDA1LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.K57HfDshM0oFN2KSLWauNPYWEAJTPSEDXFQrjpUg7gC_DVfzEn_H97ELBPUkHQ6aE7JMLgfJg5UQQLdszJ5HQDkoSjyO4QLwKtxyN-Ui_KUerO6LGDSLpy47yulWdEqjZ2NKgDarNL01xTf-rXWNEid69Wg75XNtlw5oVWGKFcptUNHo4zIwhCcGqKVYcvrqgJFQoiVjupATJQcxsxTMfyyjYfRDCvtIOuro1bG-aV5zEc5zKBpDqjb18Y7GjwMVbPl31PTaGRXqCIKNV3JB49LbZ9glhEQuB5bVK1oRI_XeJ3XZcqF9yBUf8o7JRYz7jP4snqu2JvDlEAlBUvORc8Sco78XK-FBRrXIX66yVZk_oWH8dE92Bg2feVm7njCd6jsa3s2VGEJN7E5ZOZNFTNvsxgt1uFxIa4S1WddQ5DoDJZBDEY-IzsbinmzVIoJXhuu9BlplIiarkbcDYAVYQUr944a65E3-Tu-vD8s7DmZRRZ8zxM9yFujYNG5hLrAbpbVaIOhvkyif1hJrwHVdLJjtKpoMiQtV2gSSVHKV-NU2__7pSPsUhXlNxqfLRHDFHFaMnpPDFSzx5FGgt4iRcCtVgTYE9GpOE-sOtgyI47FZ3s-AhJUITNFrwqQc-ZxOAggj8LnPpSMqosHXHEurIKJ_poYTFQuHXOgGqIO1_ZE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pageNo",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "categoryId",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audition-list",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audition-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audition-count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjFhZDZjOGI2ZTJmNWM1NTI1OWQ0ZDFmYzdiODQxOTg0ZWFmZmFjNjJiNjc4MmNiZTY5ZTYyMTIyMjM2OGYxMWEzZDRkMjNlZTJjOTA0NzIiLCJpYXQiOjE1ODk1NDA3MTYsIm5iZiI6MTU4OTU0MDcxNiwiZXhwIjoxNjIxMDc2NzE2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.qY10hFAtCzbfx9pWeNReLOHcuMqKDQxPwELx3AkVbXM1MlEqsMys-tK3VcxyotLcTTf7EgilIkQVoPXqM6jqLKaS8LzKvq8c6RcVp5PqA1roB5mApy49FWrLIxdEs03Jghyow5f1o6gT8mr4OfhtuaXVA4JCoopIqYZsoSMWDg6wT5wdEySCwQ3ZXBQpb_hKT3Ujo2u2hhvF_6da4QjYfISU8nL20y9a3_EVZzCfNUtqWJepmGfOnOZeefION87cPW-QX2Im2DaUIttUuAmBb3UsjjJndd9eDu94HsKY4KwAhIgNqOjL2xKvI6BiTnq0CUFOKJq-M2oQuuUEBqRKOM4l52_kUlboxDIQWH0gltLjGwGRYFOrxrRYl_iqflb-sQ_-34ZnzANUqLSQypsOuZYrthh13OddpOiWZVOdLkJCBc0KH93OD2B4tF5-fjRzOtv4t2sfm42wrh2uTpJcC6tsenW8i0bEtK30zMjaWmXbW391HXKXFzslQiliG6uEpg4L-GzyqNV0atY9wi_je8K7CI7hrZPtyYGChX4uVPZY10ZoXEmzlKWocDKpy-9iJ6ygHYzHhjOZCpYiXZCv7pzRn3bJ8axNKd0re06taYxkq9abjrC-9aM_aDLL5OX2UmvAsNNG3calpfynR5kfbKuL76yUsDkxwVX0W8cS52E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audition-count",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audition-count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/auditionor-list",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjJhYWU1M2I1MDkzMTFkMDc5Y2YyZjVkYTI3MGI3ZWNmNjM0MGVjODE3ODExMzI1ZGI1OTA2ZjJlNTE0NDgxMjhhNjc4ZTFjNGRjMTAwZTAiLCJpYXQiOjE1ODk1NTE0NTEsIm5iZiI6MTU4OTU1MTQ1MSwiZXhwIjoxNjIxMDg3NDUxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.wGqgn1EuWsdfmf-Tyg-CXbWBCu-tfpH16h9ahkXSYjo2s0LBC_U9lkhlV8Uj0Cswt4iO8bOwqpUT6jV527HQWG3OIe9kFDM9tnR_-mLUjGPcU4JXiNB3VHd3K432XRQyKcFi4s6NEBfUS3ddRbFJ8_UDQrnxc4itFArNJDrj0og0EBOw1ryJqwEptQJCfdtsxOb-a9MGgOYugWd2n5K_l6v6-TJPkifX7gglN7adL026hnmwDC2T7qT-OHJ1juzctjU7LDB55CeRVKQNCUgaGMogKP_7Jh48WIBzhUpgXB74y2aeOw0YbXzobrilEkxs5un8x8A3ewgMJqX4ztulHwOLdnOQMcSdb9-mUstH94jb5IBShgSJLcBt6y09eQ9KFSHH16lawb7a-uYNzz0w8SqCcVmK770uahSWBNWJxRZHj8llDdSPSoO2fra_gpU119OfoN4wOdSJoeH1lnQCdON9ojmBpKGhok5UaFlwqlUyaw98MkCDXpP8ROSsu2sypRmY1s19PBzleMZEYKHE2qLoaKNQmPODCmimu3vdVDndjrxPBEVSLYrLYwpwwIxsDnZf2mOrRdP7vJ-P7XdRdvLeV0_IiqkUDMeVjxu60rbayQ7ARKQfz7qmGYPpQ3IJ2mAzcPkJ4OBjADNDOWQCT6xVgXd3n4Z9kBGXDXuqmRk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "audiotionId",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/auditionor-list",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"auditionor-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/audiotion-apply",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZGY1NjAzYjFlMmEwMjQwOGU3YWMxZmEzYzJiMjA1MmFjMGIwYzQ2ZjRjY2JmNzZjNjA3YjMwN2Q1OTNiOWIxODg5Y2RlNmU4NmQxNTNhOTciLCJpYXQiOjE1ODk1NDkwMDUsIm5iZiI6MTU4OTU0OTAwNSwiZXhwIjoxNjIxMDg1MDA1LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.K57HfDshM0oFN2KSLWauNPYWEAJTPSEDXFQrjpUg7gC_DVfzEn_H97ELBPUkHQ6aE7JMLgfJg5UQQLdszJ5HQDkoSjyO4QLwKtxyN-Ui_KUerO6LGDSLpy47yulWdEqjZ2NKgDarNL01xTf-rXWNEid69Wg75XNtlw5oVWGKFcptUNHo4zIwhCcGqKVYcvrqgJFQoiVjupATJQcxsxTMfyyjYfRDCvtIOuro1bG-aV5zEc5zKBpDqjb18Y7GjwMVbPl31PTaGRXqCIKNV3JB49LbZ9glhEQuB5bVK1oRI_XeJ3XZcqF9yBUf8o7JRYz7jP4snqu2JvDlEAlBUvORc8Sco78XK-FBRrXIX66yVZk_oWH8dE92Bg2feVm7njCd6jsa3s2VGEJN7E5ZOZNFTNvsxgt1uFxIa4S1WddQ5DoDJZBDEY-IzsbinmzVIoJXhuu9BlplIiarkbcDYAVYQUr944a65E3-Tu-vD8s7DmZRRZ8zxM9yFujYNG5hLrAbpbVaIOhvkyif1hJrwHVdLJjtKpoMiQtV2gSSVHKV-NU2__7pSPsUhXlNxqfLRHDFHFaMnpPDFSzx5FGgt4iRcCtVgTYE9GpOE-sOtgyI47FZ3s-AhJUITNFrwqQc-ZxOAggj8LnPpSMqosHXHEurIKJ_poYTFQuHXOgGqIO1_ZE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "audiotionId",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "sdfsdf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/audiotion-apply",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"audiotion-apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/switch-account",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMjJhYWU1M2I1MDkzMTFkMDc5Y2YyZjVkYTI3MGI3ZWNmNjM0MGVjODE3ODExMzI1ZGI1OTA2ZjJlNTE0NDgxMjhhNjc4ZTFjNGRjMTAwZTAiLCJpYXQiOjE1ODk1NTE0NTEsIm5iZiI6MTU4OTU1MTQ1MSwiZXhwIjoxNjIxMDg3NDUxLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.wGqgn1EuWsdfmf-Tyg-CXbWBCu-tfpH16h9ahkXSYjo2s0LBC_U9lkhlV8Uj0Cswt4iO8bOwqpUT6jV527HQWG3OIe9kFDM9tnR_-mLUjGPcU4JXiNB3VHd3K432XRQyKcFi4s6NEBfUS3ddRbFJ8_UDQrnxc4itFArNJDrj0og0EBOw1ryJqwEptQJCfdtsxOb-a9MGgOYugWd2n5K_l6v6-TJPkifX7gglN7adL026hnmwDC2T7qT-OHJ1juzctjU7LDB55CeRVKQNCUgaGMogKP_7Jh48WIBzhUpgXB74y2aeOw0YbXzobrilEkxs5un8x8A3ewgMJqX4ztulHwOLdnOQMcSdb9-mUstH94jb5IBShgSJLcBt6y09eQ9KFSHH16lawb7a-uYNzz0w8SqCcVmK770uahSWBNWJxRZHj8llDdSPSoO2fra_gpU119OfoN4wOdSJoeH1lnQCdON9ojmBpKGhok5UaFlwqlUyaw98MkCDXpP8ROSsu2sypRmY1s19PBzleMZEYKHE2qLoaKNQmPODCmimu3vdVDndjrxPBEVSLYrLYwpwwIxsDnZf2mOrRdP7vJ-P7XdRdvLeV0_IiqkUDMeVjxu60rbayQ7ARKQfz7qmGYPpQ3IJ2mAzcPkJ4OBjADNDOWQCT6xVgXd3n4Z9kBGXDXuqmRk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "type",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/switch-account",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"switch-account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/category",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://product.hos7itsolutions.com/stagepicker/api/notificaion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjNkNGU0NGRkNDRjOGYwOGFhMDJhNDVjNDc2YWU2NDc1OGQ1NGJjMjdiMTBmMmZhODYyNjlkMmU3MGQ3MDY4YTc3ODE4ZDA4NzM3MDY5NzMiLCJpYXQiOjE1ODk2MDg4OTIsIm5iZiI6MTU4OTYwODg5MiwiZXhwIjoxNjIxMTQ0ODkyLCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.SoVEgJIXR76GBRM8tieLaS5av_OeGZTAuHDzz3XKE6qhMbomYDmXouGFldVfIN_lJKuCXUPLfcszvPCxJnLNTlhVOShpQWkp13gnW9ATmfwNcEZwElnCv-f55dB_FMZv4jhTIaKkpsPTvAgAn3pEeqD87o3CI6dHJ7ypsqfzNEtS8V5DLMuOtXZ-42XJihs5_atEvSP-SS56exuhBlMiOXKhIAkRk5vjGNrG4xSarzFSV2USD2AZoCLfZar3dsLc-NPRtVipO5rWEs-WwgFMMQppACnaH-9SYoV_09bzs4ldcGafxPawIbtrz7kEN7TKuUChXOiuu23JroBPlMGJDyuSbZtkVRpTlb43e_ezaCp-bGKaJvWYvIRPriVh8w9uZWCsyMlVrnBDXtGqUPUvWMGGm0_f5rdZ50l5b_qtt2yk8qjZDzp2gwsmihLxSHQopbyX5HUJMqAfztZsbqurAoht7soYnXSOe8AfUsShOCD_UHC9A7zPga78H85lTfnHPKHlNf1azjCv1pT6nMm-LmF8zeboribrbHBfhoidcSqVFT2Nx1KD4BBMSkLt59654mkOT4joK1QmHwZVkN_pmrpdrLMvQnkJ1BlE7ctskab1mzGsrwSW6h-RmY-nvqR2vtW8pRSN1Ghtw6rzY-Ui_OL2psK-hMQvppSXq5GwF3c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://product.hos7itsolutions.com/stagepicker/api/notificaion",
+					"protocol": "https",
+					"host": [
+						"product",
+						"hos7itsolutions",
+						"com"
+					],
+					"path": [
+						"stagepicker",
+						"api",
+						"notificaion"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

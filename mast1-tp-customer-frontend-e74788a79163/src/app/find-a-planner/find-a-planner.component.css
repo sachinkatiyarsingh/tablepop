@@ -1,0 +1,226 @@
+.user_section {
+    background: #ddecee;
+    padding: 260px 0px 60px;
+}
+
+.user_section .user_box_inner {
+    display: flex;
+    justify-content: space-around;
+    margin-left: -1%;
+}
+
+.user_section .user_box_inner .user_box {
+    flex: 1;
+    background: #fff;
+    max-width: 36%;
+    margin-left: 1%
+}
+
+.user_section .user_box_inner .user_box img {
+    width: auto;
+    max-height: 190px;
+    margin: 0px auto;
+    display: block;
+    margin-top: -130px
+}
+
+.user_section .user_box_inner .user_box .user_con_box {
+    padding: 20px 30px;
+}
+
+.user_section .user_box_inner .user_box .button_box {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    margin-right: -109px;
+}
+
+
+.user_section .user_box_inner .user_box h3 {
+    font-size: 32px;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
+
+.user_section .user_box_inner .user_box p {
+    font-weight: 300;
+}
+.user_section .user_box_inner .user_box p strong{
+    font-weight: 400;
+}
+
+.user_section .user_box_inner .user_box a {
+    border: 1px solid #000;
+    padding: 10px 40px;
+    display: inline-block;
+    color: #000;
+    font-weight: 600;
+    background: #fff;
+}
+
+.user_section .user_box_inner .user_box a img {
+    display: -webkit-inline-box;
+    vertical-align: bottom;
+    max-width: 25px;
+    padding-left: 20px;
+}
+
+.support_box {}
+
+.support_box .heading {}
+
+.support_box .heading h4 {
+    font-size: 36px;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.support_box .support_banner {
+    background: url(src/assets/images/MaskGroup36.png);
+    height: 400px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+.support_box .support_content {
+    background: #faefea;
+}
+
+.support_box .support_content .support_content_inner {}
+
+.support_box .support_content .support_content_inner ul {
+    display: flex;
+}
+
+.support_box .support_content .support_content_inner ul li {
+    flex: 1;
+    padding: 20px;
+}
+
+.support_box .support_content .support_content_inner ul li h3 {
+    font-size: 32px;
+    font-weight: 400;
+    padding-bottom: 10px;
+}
+
+.support_box .support_content .support_content_inner ul li label {
+    display: block;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+}
+
+.support_box .support_content .support_content_inner ul li label:after {
+    content: '';
+    height: 2px;
+    width: 100px;
+    position: absolute;
+    background: #000;
+    bottom: 0px;
+    left: 0px;
+}
+
+.support_box .support_content .support_content_inner ul li span {
+    display: block;
+    font-weight: 300;
+    padding-bottom: 5px;
+}
+
+
+
+.guranity_box {
+    padding: 100px 0px 60px;
+    position: relative;
+}
+
+.guranity_box:after {
+    content: '';
+    background: #faefea;
+    position: absolute;
+    top: 0;
+    left: 0px;
+    right: 0;
+    bottom: 50%;
+}
+
+.guranity_box:before {
+    content: '';
+    background: #ddebee;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0;
+    bottom: 0%;
+}
+
+.guranity_box .guranity_box_inner {
+    display: flex;
+    position: relative;
+    z-index: 9;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left {
+    flex: 1;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left .call_box {
+    margin-bottom: 90px;
+    padding-right: 100px;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left .call_box:last-child {
+    margin-bottom: 0px;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left .call_box img {
+    width: 30px;
+    margin-bottom: 10px;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left .call_box h5 {
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 44px;
+    margin-bottom: 20px;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_left .call_box a {
+    background: none;
+    color: #000;
+    font-weight: 900;
+    font-size: 18px;
+
+}.guranity_box .guranity_box_inner .guranity_box_left .call_box a .arrow {
+    display: -webkit-inline-box;
+    vertical-align: middle;
+    max-width: 25px;
+    margin-top: 7px;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_right {
+    flex: 1;
+    width: 50%;
+}
+
+.guranity_box .guranity_box_inner .guranity_box_right img {
+    width: 100%;
+}
+.button_box{ display: flex;
+    flex: 1;
+    margin-right: -120px;}
+.button_box a {
+    border: 1px solid #000;
+    padding: 10px 40px;
+    display: inline-block;
+    color: #000;
+    font-weight: 600;
+    background: #fff;
+}
+.button_box a img {  
+      display: -webkit-inline-box;
+    vertical-align: bottom;
+    max-width: 25px;
+    padding-left: 20px;
+}

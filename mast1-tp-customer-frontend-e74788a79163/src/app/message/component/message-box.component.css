@@ -1,0 +1,72 @@
+.message-box {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-left: 30px;
+}
+
+.message-box.you {}
+
+.message-box.me {
+  justify-content: flex-end;
+}
+
+.message-box .thumbnail {
+  width: 60px;
+  height: 60px;
+  background: #fbefeb;
+  max-width: 60px;
+  flex: 1;
+  border-radius: 50%;
+  background-size: cover !important;
+  background-repeat: no-repeat;
+}
+
+.message-box .message_content {
+  flex: 1;
+  max-width: 400px;
+  margin: 0px 20px;
+}
+
+.message-box .message_content .message-text {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 11px;
+}
+
+.message-box .message_content .message-text p {
+  font-size: 12px;
+  font-style: italic;
+  word-break: break-all;
+}
+
+.message-box.me .message_content .message-text {
+  background: #f4fafb;
+}
+
+.message-box .message_content span.date {
+  color: #707070;
+  font-size: 12px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.message_content .message-text .file_msg img {
+  vertical-align: middle;
+  max-height: 130px;
+  /* width: 100%;  */
+}
+
+.message-box .message_content .message-text .file_msg .file_box a {
+  position: relative;
+  top: 0;
+  left: 83px;
+  right: 0;
+  bottom: 0;
+  padding: 50px 0px;
+}
+
+.message-box .message_content .message-text .file_msg .file_box a .download {
+  max-width: 30px;
+  opacity: 0;
+}

@@ -1,0 +1,186 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="profile_section">
+    <div class="container">
+        <div class="profile_inner">
+            <div class="profile_left" style="background: url({{profileData.profileImage}});">
+                <span>Change profile picture</span>
+                <div class="profile_upload">
+                    <img src="/assets/images/camera.png" alt="" />
+                    <input type="file" accept="image/*" multiple="false" #pf
+                        (change)="fileChangeListener(pf.files,pf)" />
+                </div>
+            </div>
+
+
+            <div class="profile_details">
+                <form [formGroup]="profileForm">
+                    <div class="profile_box">
+                        <div class="enable_btn">
+                            <h4>Personal Info</h4>
+                            <a href="javascript:void(0)" class="btn btn-primary btn bt"
+                                (click)="enableContactInfo()">Edit</a>
+                        </div>
+                        <div class="tab_content">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control" formControlName="name" />
+                                <!-- <span class="error"
+                                *ngIf="profileForm.controls['firstName'].touched && profileForm.controls['firstName'].hasError('required')">First
+                                name
+                                is required.</span> -->
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control" formControlName="surname" />
+                            </div>
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                <!-- <input type="text" class="form-control" formControlName="mobil" /> -->
+                                <input type="text" class="form-control" formControlName="mobile"
+                                    placeholder="Mobile Number" ng2TelInput
+                                    [ng2TelInputOptions]="{initialCountry: 'us'}" (ng2TelOutput)="getNumber($event)"
+                                    (countryChange)="onCountryChange($event)" (hasError)="onError($event)" />
+                                <div [ngSwitch]="profileForm.controls['mobile'].dirty">
+                                    <div *ngSwitchCase="profileForm.controls['mobile'].value==''"></div>
+                                    <div *ngSwitchDefault> <span class="error"
+                                            *ngIf="profileForm.controls['mobile'].dirty&&!mobileValid">Please
+                                            Enter Valid Mobile Number</span></div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Country</label>
+                                <select class="form-control" formControlName="country" placeholder="Select Country"
+                                    (change)="changeCountry($event)">
+                                    <option *ngFor="let c of countryData" [value]="c.id">{{c.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>State</label>
+                                <select class="form-control" formControlName="state">
+                                    <option *ngFor="let s of stateData" [value]="s.id">{{s.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="currentPassword" />
+                                <a href="javascript:void(0)" (click)="enableDisableControle('currentPassword')"
+                                    *ngIf="password">Change</a>
+
+                            </div>
+                            <div *ngIf="!profileForm.controls['currentPassword'].disabled">
+                                <div class="form-group">
+                                    <label> New Password</label>
+                                    <input type="password" class="form-control" formControlName="newPassword"
+                                        autocomplete="nope" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm New Password</label>
+                                    <input type="password" class="form-control" formControlName="confirmPassword"
+                                        autocomplete="nope" />
+                                </div>
+                                <div class="save_password">
+                                    <a href="javascript:void(0)" class="btn btn-primary btn"
+                                        (click)="updatePassword()">Save
+                                        Password</a>
+                                </div>
+                            </div>
+
+                            <div class="update_btn" style="text-align: end;">
+                                <a href="javascript:void(0)" class="btn btn-primary "
+                                    (click)="profile_Update()">Update</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="add_address_box">
+                    <div class="address_table" *ngIf="!isAddressAddEdit">
+                        <div class="profile_box">
+                            <div class="enable_btn">
+                                <h4 (click)="addressSection=!addressSection">Address</h4>
+                                <a href="javascript:void(0)" class="btn btn-primary btn bt"
+                                    (click)="addNewAddress({},-1)">Add</a>
+                            </div>
+                            <div class="tab_content">
+                                <div class="address-list">
+                                    <table>
+                                        <tr>
+                                            <td class="bold">Sr. No.</td>
+                                            <td class="bold">Street </td>
+                                            <td class="bold">Country</td>
+                                            <td class="bold">Phone Number </td>
+                                            <td class="bold">Action </td>
+                                        </tr>
+                                        <tr *ngFor="let list of userAddress; let i = index">
+                                            <td> {{i+1}} </td>
+                                            <td>{{list.street}}</td>
+                                            <td> {{list.countryName}} </td>
+                                            <td> {{list.phoneNumber}} </td>
+                                            <td><a href="javascript:void(0)" (click)="addNewAddress(list,i)">Edit</a>
+                                                <a style="margin-left:10px;" href="javascript:void(0)"
+                                                    (click)="deleteAddress(list.id,i)">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="userAddress.length==0">
+                                            <td colspan="5" class="norecord">
+                                                No record found..
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="address_field" *ngIf="isAddressAddEdit">
+                        <form [formGroup]="addressForm">
+                            <div class="profile_box">
+                                <div class="form-group">
+                                    <label>Street</label>
+                                    <input type="text" class="form-control" placeholder="Street"
+                                        formControlName="street" />
+                                    <span class="error"
+                                        *ngIf="addressForm.controls['street'].touched && addressForm.controls['street'].hasError('required')">Street
+                                        is required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Country</label>
+                                    <select class="form-control" formControlName="country" placeholder="Select Country">
+                                        <option value="">Select Country</option>
+                                        <option *ngFor="let c of countryData" [value]="c.id">{{c.name}}</option>
+                                    </select>
+                                    <span class="error"
+                                        *ngIf="addressForm.controls['country'].touched && addressForm.controls['country'].hasError('required')">Country
+                                        is required.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="text" class="form-control" formControlName="phoneNumber"
+                                        placeholder="Mobile Number" ng2TelInput
+                                        [ng2TelInputOptions]="{initialCountry: 'us'}"
+                                        (ng2TelOutput)="getNumberTel($event)" (countryChange)="telCountryChange($event)"
+                                        (hasError)="onErrors($event)" />
+                                    <span class="error"
+                                        *ngIf="addressForm.controls['phoneNumber'].touched && addressForm.controls['phoneNumber'].hasError('required')">Mobile
+                                        is required.</span>
+                                    <span class="error"
+                                        *ngIf="addressForm.controls['phoneNumber'].dirty && !mobileValidation ">
+                                        Please Enter
+                                        a valid number</span>
+                                </div>
+
+                                <div class="update_btn" style="text-align: end;">
+                                    <a href="javascript:void(0)" class="btn btn-primary " *ngIf="isNewAddress"
+                                        (click)="addAddress()" [ngClass]="{'disabled': addressForm.invalid}">Add</a>
+                                    <a href="javascript:void(0)" class="btn btn-primary " *ngIf="!isNewAddress"
+                                        (click)="editAddress()">Update</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

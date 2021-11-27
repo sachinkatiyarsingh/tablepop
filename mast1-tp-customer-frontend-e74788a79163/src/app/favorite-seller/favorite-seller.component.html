@@ -1,0 +1,39 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="content_block">
+    <div class="container">
+        <div class="inner-content">
+            <div class="main_content" *ngIf="favoriteSeller">
+                <div class="vendor_list">
+                    <div class="vendor_box" [hidden]="noRecordFound" *ngFor="let item of favoriteSeller">
+                        <div class="vendor_thumb">
+                            <div class="thumbnail" *ngIf="item.profileImage.length!=0"
+                                style="background: url({{item.profileImage}});"></div>
+                            <div class="no_profile" *ngIf="item.profileImage.length==0"></div>
+                            <div class="heart_icon" (click)="unmarkFavorite(item)"
+                                [ngClass]="{'active': item.favorite==1}"> </div>
+                            <a href="javascript:void(0)" *ngIf="item.type=='Vendor'" (click)="goToDetail(item)"
+                                class="btn-link">View Profile</a>
+                            <a href="javascript:void(0)" *ngIf="item.type=='Planner'" (click)="goToDetail(item)"
+                                class="btn-link">View Profile</a>
+                        </div>
+                        <div class="rating">
+                            <ul>
+                                <li [ngClass]="{'fill': rating.active,'blank' : !rating.active}"
+                                    *ngFor="let rating of item.reviewRating" class="fill"></li>
+                            </ul>
+                        </div>
+                        <div class="vendor-details">
+                            <h3>{{item.profileName}}</h3>
+                            <span class="location">{{item.location}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="noRecordFound">
+                    <h3 class="norecord">No Data Found</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <app-footer></app-footer> -->

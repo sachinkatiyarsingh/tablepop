@@ -1,0 +1,100 @@
+.content_block {
+  padding: 20px 0px;
+}
+
+.content_block .view_by_wrap {}
+
+.content_block .view_by_wrap .view_by_box {}
+
+.content_block .view_by_wrap .view_by_box a {
+  color: #6d0202;
+  padding-right: 40px;
+  font-size: 14px;
+}
+
+.content_block .customer_table tr td {
+  padding: 15px 0px !important;
+    font-size: 14px;
+}
+
+.content_block .customer_table {}
+
+.content_block .customer_table .tab {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+}
+
+.content_block .customer_table .tab span {
+  display: flex;
+  flex: 1;
+  max-width: 100px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.content_block .customer_table .tab span.active {
+  border-bottom: 1px solid #6d0202;
+  color: #6d0202;
+}
+
+.content_block .customer_table .customer_table_list {
+  padding-top: 20px;
+}
+
+.content_block .customer_table .customer_table_list a {
+  color: #fff;
+  border: 1px solid #6d0202;
+  background: #6d0202;
+  font-size: 11px;
+  border-radius: 30px;
+}
+
+.content_block .customer_table .customer_table_list img {
+  max-width: 20px;
+  margin: 7px 0px 0px;
+}
+
+table {
+  border: none;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+table tr {
+  border-bottom: 1px solid #6d0202;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+table tr td {
+  padding: 10px 0px;
+  vertical-align: middle;
+}
+
+.plan_desc {
+  max-width: 600px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.plan_price {
+  width: 100px;
+  text-align: center;
+}
+
+.plan_btn {
+  width: 100px;
+}
+.action{
+  width: 100px;
+  text-align: center;
+}

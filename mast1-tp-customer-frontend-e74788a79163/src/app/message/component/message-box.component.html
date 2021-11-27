@@ -1,0 +1,26 @@
+<ng-container *ngIf="message">
+    <div class="message-box" [ngClass]="{'me':message.sendType===2,'you':message.sendType!==2}">
+        <div class="thumbnail" *ngIf="message.sendType==1" style="background: url({{message.adminImage}});">
+        </div>
+        <div class="thumbnail" *ngIf="message.sendType==2" style="background: url({{message.customerImage}});">
+        </div>
+        <div class="thumbnail" *ngIf="message.sendType==3" style="background: url({{message.sellerImage}});">
+        </div>
+
+        <div class="message_content">
+            <div class="message-text">
+                <p>{{message.message}}</p>
+                <div class="file_msg" *ngIf="message.msgFile&&message.msgFiles.length>0">
+                    <div class="file_box" *ngFor="let file of message.msgFiles">
+                        <a href="{{imageUrl+file.file}}" target="_blank" download><img src="/assets/images/download.png"
+                                alt="" class="download"></a>
+                        <img *ngIf="!file.iconShow" src="{{imageUrl+file.file}}" alt="">
+                        <img *ngIf="file.iconShow" src="/assets/images/file.png" alt="">
+                        <p *ngIf="file.iconShow"> {{file.file}}</p>
+                    </div>
+                </div>
+            </div>
+            <span class="date">{{message.updated_at| date:'fullDate'}}</span>
+        </div>
+    </div>
+</ng-container>

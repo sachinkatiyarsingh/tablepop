@@ -1,0 +1,132 @@
+<!-- <app-header [headerClass]="'light'"></app-header> -->
+<section class="dashboard">
+    <div class="container">
+        <div class="invite_link">
+            <div class="invite_url">
+                <label>Invite:</label>
+                <a href="javascript:void(0)"
+                    (click)="goToRegister()">{{invite}}?invitationCode={{currentUser.invitationCode}}
+                </a>
+            </div>
+            <div class="social_share">
+                <ul>
+                    <li>
+                        <label>Share:</label>
+                        <a href="https://twitter.com/share?url={{invite}}?invitationCode={{currentUser.invitationCode}}"
+                            target="_blank">
+                            <img src="/assets/images/twitt.png" alt="Twitter" />
+                        </a>
+                        <a href="https://www.facebook.com/sharer.php?u={{invite}}?invitationCode={{currentUser.invitationCode}}"
+                            target="_blank">
+                            <img src="/assets/images/facebook.png" alt="Facebook" />
+                        </a>
+                        <a href="https://web.whatsapp.com/send?text={{invite}}?invitationCode={{currentUser.invitationCode}}"
+                            class="wa_btn wa_btn_s" target="_blank">
+                            <img src="/assets/images/whtsapp.png" alt="Whatsapp"></a>
+                        <a href="mailto:?Subject={{invite}}?invitationCode={{currentUser.invitationCode}}">
+                            <img src="/assets/images/email.png" alt="Email" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="dashboard_inner" *ngIf="dashboardData">
+            <div class="notification_block">
+                <div class="notification_head">
+                    <h2>New notifications </h2>
+                    <!-- <a href="/notification">view all</a> -->
+                </div>
+                <div class="scroll-content " *ngIf="dashboardData.notification" infiniteScroll
+                    [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="getMoreNotification()"
+                    [scrollWindow]="false">
+                    <div class=" notification_wrap" [hidden]="noRecordFound"
+                        *ngFor="let notification of dashboardData.notification;let i=index;">
+                        <div class="notification_box">
+                            <div class="thumbnail" *ngIf="notification.image.length == 0"
+                                style="background: url(assets/images/avatar.png);">
+
+                            </div>
+                            <div class="thumbnail" *ngIf="notification.image.length!=0"
+                                style="background: url({{notification.image}});">
+
+                            </div>
+                            <div class="notification_details">
+                                <h3>{{notification.notification}}</h3>
+
+                            </div>
+                            <div class="notification_control">
+                                <a href="javascript:void(0)" (click)="goToPage(notification)">Reply request</a>
+                                <div class="trash_icon" (click)="deleteNotification(notification,i)">
+                                    <img src="assets/images/delete.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="noRecordFound" [ngClass]="{'no_record': noRecordFound}">
+                        <p class="norecord">No New Notification</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ongoing_box">
+                <div class="notification_head">
+                    <h2>Ongoing</h2>
+                    <a href="/events">View more project</a>
+                </div>
+                <div class="scroll-content " *ngIf="dashboardData.ongoing" infiniteScroll [infiniteScrollDistance]="1"
+                    [infiniteScrollThrottle]="50" (scrolled)="getMoreOngoing()" [scrollWindow]="false">
+                    <div class="ongoing_section" [hidden]="noOngoing" *ngFor="let ongoing of dashboardData.ongoing">
+                        <div class="event_date">
+                            <span class="date">{{ongoing.farEventDate|date:'mediumDate'}}</span>
+                        </div>
+                        <div class="ongoing_inner_box">
+                            <img [src]="ongoing.image" alt="" />
+                            <h2>{{ongoing.eventName}}</h2>
+                            <ul>
+                                <li><a href="/event/{{ongoing.id}}">View Project </a></li>
+                                <li><a href="/transactions/{{ongoing.id}}">View invoice</a></li>
+                            </ul>
+                            <div class="delte_icon">
+                                <img src="/assets/images/delete.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="noOngoing" [ngClass]="{'no_record': noOngoing}">
+                        <p class="norecord">No Data Found</p>
+                    </div>
+                </div>
+            </div>
+            <div class="message_box">
+                <div class="notification_head">
+                    <h2>New messages</h2>
+                    <a href="/message">all messages</a>
+                </div>
+                <div class="messages_block no-record_box scroll-content" *ngIf="dashboardData.messages" infiniteScroll
+                    [infiniteScrollDistance]="1" [infiniteScrollThrottle]="50" (scrolled)="getMoreMessage()"
+                    [scrollWindow]="false">
+                    <div class="d_message_box" [hidden]="noRecord" *ngFor="let message of dashboardData.messages">
+
+                        <div class="message_head">
+                            <div class="thumbnail" style="background: url(assets/images/avatar.png);"
+                                *ngIf="message.image.length ==0">
+
+                            </div>
+                            <div class="thumbnail" style="background: url({{message.image}});"
+                                *ngIf="message.image.length !=0">
+
+                            </div>
+                            <h2>{{message.name}}</h2>
+                            <a href="/message">Reply message</a>
+                        </div>
+                        <div class="message_text">
+                            <p>{{message.message}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="noRecord" [ngClass]="{'no_record': noRecord}">
+                        <p class="norecord">No New Message</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <app-footer></app-footer> -->
